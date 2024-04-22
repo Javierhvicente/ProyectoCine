@@ -1,20 +1,3 @@
--- ClienteEntity
-CREATE TABLE IF NOT EXISTS ClienteEntity(
-    id TEXT PRIMARY KEY NOT NULL,
-    nombre TEXT NOT NULL
-);
---Crud ClienteEntity
-getAllClienteEntity:
-SELECT * FROM ClienteEntity;
-
-getByIdClienteEntity:
-SELECT * FROM ClienteEntity WHERE id = ?;
-
-updateClienteEntity:
-UPDATE ClienteEntity SET id=?, nombre=?;
-
-deleteAllClienteEntity:
-DELETE FROM ClienteEntity;
 
 --ButacaEntity
 CREATE TABLE IF NOT EXISTS ButacaEntity(
@@ -29,6 +12,12 @@ SELECT * FROM ButacaEntity;
 
 getByIdButacaEntity:
 SELECT * FROM ButacaEntity WHERE id = ?;
+
+getbutacaByTipo:
+SELECT * FROM ButacaEntity WHERE tipo = ?;
+
+insertarbutaca:
+INSERT INTO ButacaEntity (id,estado,tipo,precio) VALUES (?,?,?,?);
 
 updateButacaEntity:
 UPDATE ButacaEntity SET id=?, estado=?, tipo=?, precio=?;

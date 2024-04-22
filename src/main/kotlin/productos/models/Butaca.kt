@@ -19,10 +19,10 @@ class Butaca(
         }
     }
 }
-enum class Estado{
-    ACTIVA,
-    MANTENIMIENTO,
-    OUTSERVICE
+enum class Estado(estado: String) {
+    ACTIVA("Activa"),
+    MANTENIMIENTO("Mantenimiento"),
+    OUTSERVICE("OutService")
 }
 
 enum class Ocupacion{

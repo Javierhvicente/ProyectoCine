@@ -41,7 +41,6 @@ class SqlDelightManager {
         logger.debug { "SqlDeLightClient.removeAllData()" }
         databaseQueries.transaction {
             databaseQueries.deleteAllButacaEntity()
-            databaseQueries.deleteAllClienteEntity()
             databaseQueries.deleteAllComplemetoEntity()
         }
     }
