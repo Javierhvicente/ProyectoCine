@@ -1,0 +1,56 @@
+-- ClienteEntity
+CREATE TABLE IF NOT EXISTS ClienteEntity(
+    id TEXT PRIMARY KEY NOT NULL,
+    nombre TEXT NOT NULL
+);
+--Crud ClienteEntity
+getAllClienteEntity:
+SELECT * FROM ClienteEntity;
+
+getByIdClienteEntity:
+SELECT * FROM ClienteEntity WHERE id = ?;
+
+updateClienteEntity:
+UPDATE ClienteEntity SET id=?, nombre=?;
+
+deleteAllClienteEntity:
+DELETE FROM ClienteEntity;
+
+--ButacaEntity
+CREATE TABLE IF NOT EXISTS ButacaEntity(
+    id TEXT PRIMARY KEY NOT NULL,
+    estado TEXT NOT NULL,
+    tipo TEXT NOT NULL,
+    precio INTEGER NOT NULL
+);
+-- Crud ButacaEntity
+getAllButacaEntity:
+SELECT * FROM ButacaEntity;
+
+getByIdButacaEntity:
+SELECT * FROM ButacaEntity WHERE id = ?;
+
+updateButacaEntity:
+UPDATE ButacaEntity SET id=?, estado=?, tipo=?, precio=?;
+
+deleteAllButacaEntity:
+DELETE FROM ButacaEntity;
+
+--ComplementoEntity
+CREATE TABLE IF NOT EXISTS ComplemetoEntity(
+    id INTEGER PRIMARY KEY NOT NULL,
+    nombre TEXT NOT NULL,
+    precio INTEGER NOT NULL
+);
+-- Crud ComplemetoEntity
+getAllComplemetoEntity:
+SELECT * FROM ComplemetoEntity;
+
+getByIdComplemetoEntity:
+SELECT * FROM ComplemetoEntity WHERE id = ?;
+
+updateComplementoEntity:
+UPDATE ComplemetoEntity SET id=?, nombre=?, precio=?;
+
+deleteAllComplemetoEntity:
+DELETE FROM ComplemetoEntity;
