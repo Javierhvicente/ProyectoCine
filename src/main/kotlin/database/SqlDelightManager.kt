@@ -1,4 +1,5 @@
 package org.example.database
+
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
 import database.DatabaseQueries
 import dev.javierhvicente.database.AppDatabase
@@ -30,8 +31,8 @@ class SqlDelightManager {
         }.databaseQueries
     }
 
-    fun initialize(){
-        if(Config.databaseInitData){
+    fun initialize() {
+        if (Config.databaseInitData) {
             removeAllData()
         }
     }
@@ -41,7 +42,6 @@ class SqlDelightManager {
         logger.debug { "SqlDeLightClient.removeAllData()" }
         databaseQueries.transaction {
             databaseQueries.deleteAllButacaEntity()
-            databaseQueries.deleteAllClienteEntity()
             databaseQueries.deleteAllComplemetoEntity()
         }
     }
