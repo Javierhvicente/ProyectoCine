@@ -1,12 +1,11 @@
 package org.example.productos.models
 
 class Comida(
-    val nombre:String,
-    val categoria:CategoriaComida
-):Complementos() {
+    val nombre:CategoriaComida
+):Complemento() {
     val precio:Double
     init {
-        when(categoria){
+        when(nombre){
             CategoriaComida.PALOMITAS-> precio=3.0
             CategoriaComida.FRUTOSSECOS->precio=2.0
             CategoriaComida.PATATAS-> precio=2.5

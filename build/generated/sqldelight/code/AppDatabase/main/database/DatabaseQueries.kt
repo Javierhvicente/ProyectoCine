@@ -88,23 +88,26 @@ public class DatabaseQueries(
   }
 
   public fun <T : Any> getAllComplemetoEntity(mapper: (
+    tipo: String,
     id: Long,
     nombre: String,
     precio: Long,
   ) -> T): Query<T> = Query(1_265_361_777, arrayOf("ComplemetoEntity"), driver, "database.sq",
       "getAllComplemetoEntity",
-      "SELECT ComplemetoEntity.id, ComplemetoEntity.nombre, ComplemetoEntity.precio FROM ComplemetoEntity") {
+      "SELECT ComplemetoEntity.tipo, ComplemetoEntity.id, ComplemetoEntity.nombre, ComplemetoEntity.precio FROM ComplemetoEntity") {
       cursor ->
     mapper(
-      cursor.getLong(0)!!,
-      cursor.getString(1)!!,
-      cursor.getLong(2)!!
+      cursor.getString(0)!!,
+      cursor.getLong(1)!!,
+      cursor.getString(2)!!,
+      cursor.getLong(3)!!
     )
   }
 
-  public fun getAllComplemetoEntity(): Query<ComplemetoEntity> = getAllComplemetoEntity { id,
+  public fun getAllComplemetoEntity(): Query<ComplemetoEntity> = getAllComplemetoEntity { tipo, id,
       nombre, precio ->
     ComplemetoEntity(
+      tipo,
       id,
       nombre,
       precio
@@ -112,21 +115,48 @@ public class DatabaseQueries(
   }
 
   public fun <T : Any> getByIdComplemetoEntity(id: Long, mapper: (
+    tipo: String,
     id: Long,
     nombre: String,
     precio: Long,
   ) -> T): Query<T> = GetByIdComplemetoEntityQuery(id) { cursor ->
     mapper(
-      cursor.getLong(0)!!,
-      cursor.getString(1)!!,
-      cursor.getLong(2)!!
+      cursor.getString(0)!!,
+      cursor.getLong(1)!!,
+      cursor.getString(2)!!,
+      cursor.getLong(3)!!
     )
   }
 
   public fun getByIdComplemetoEntity(id: Long): Query<ComplemetoEntity> =
-      getByIdComplemetoEntity(id) { id_, nombre, precio ->
+      getByIdComplemetoEntity(id) { tipo, id_, nombre, precio ->
     ComplemetoEntity(
+      tipo,
       id_,
+      nombre,
+      precio
+    )
+  }
+
+  public fun <T : Any> getComplementoByTipo(tipo: String, mapper: (
+    tipo: String,
+    id: Long,
+    nombre: String,
+    precio: Long,
+  ) -> T): Query<T> = GetComplementoByTipoQuery(tipo) { cursor ->
+    mapper(
+      cursor.getString(0)!!,
+      cursor.getLong(1)!!,
+      cursor.getString(2)!!,
+      cursor.getLong(3)!!
+    )
+  }
+
+  public fun getComplementoByTipo(tipo: String): Query<ComplemetoEntity> =
+      getComplementoByTipo(tipo) { tipo_, id, nombre, precio ->
+    ComplemetoEntity(
+      tipo_,
+      id,
       nombre,
       precio
     )
@@ -188,11 +218,14 @@ public class DatabaseQueries(
     id: Long,
     nombre: String,
     precio: Long,
+    tipo: String,
   ) {
-    driver.execute(634_510_139, """UPDATE ComplemetoEntity SET id=?, nombre=?, precio=?""", 3) {
+    driver.execute(634_510_139, """UPDATE ComplemetoEntity SET id=?, nombre=?, precio=?, tipo=?""",
+        4) {
           bindLong(0, id)
           bindString(1, nombre)
           bindLong(2, precio)
+          bindString(3, tipo)
         }
     notifyQueries(634_510_139) { emit ->
       emit("ComplemetoEntity")
@@ -202,6 +235,31 @@ public class DatabaseQueries(
   public fun deleteAllComplemetoEntity() {
     driver.execute(1_229_557_100, """DELETE FROM ComplemetoEntity""", 0)
     notifyQueries(1_229_557_100) { emit ->
+      emit("ComplemetoEntity")
+    }
+  }
+
+  public fun insertComplemento(
+    tipo: String,
+    nombre: String,
+    precio: Long,
+  ) {
+    driver.execute(-1_635_732_152,
+        """INSERT INTO ComplemetoEntity(tipo,nombre,precio) VALUES(?,?,?)""", 3) {
+          bindString(0, tipo)
+          bindString(1, nombre)
+          bindLong(2, precio)
+        }
+    notifyQueries(-1_635_732_152) { emit ->
+      emit("ComplemetoEntity")
+    }
+  }
+
+  public fun deleteComplementoByID(id: Long) {
+    driver.execute(-1_079_616_536, """DELETE FROM ComplemetoEntity WHERE id=?""", 1) {
+          bindLong(0, id)
+        }
+    notifyQueries(-1_079_616_536) { emit ->
       emit("ComplemetoEntity")
     }
   }
@@ -264,11 +322,33 @@ public class DatabaseQueries(
 
     override fun <R> execute(mapper: (SqlCursor) -> QueryResult<R>): QueryResult<R> =
         driver.executeQuery(-196_566_082,
-        """SELECT ComplemetoEntity.id, ComplemetoEntity.nombre, ComplemetoEntity.precio FROM ComplemetoEntity WHERE id = ?""",
+        """SELECT ComplemetoEntity.tipo, ComplemetoEntity.id, ComplemetoEntity.nombre, ComplemetoEntity.precio FROM ComplemetoEntity WHERE id = ?""",
         mapper, 1) {
       bindLong(0, id)
     }
 
     override fun toString(): String = "database.sq:getByIdComplemetoEntity"
+  }
+
+  private inner class GetComplementoByTipoQuery<out T : Any>(
+    public val tipo: String,
+    mapper: (SqlCursor) -> T,
+  ) : Query<T>(mapper) {
+    override fun addListener(listener: Query.Listener) {
+      driver.addListener("ComplemetoEntity", listener = listener)
+    }
+
+    override fun removeListener(listener: Query.Listener) {
+      driver.removeListener("ComplemetoEntity", listener = listener)
+    }
+
+    override fun <R> execute(mapper: (SqlCursor) -> QueryResult<R>): QueryResult<R> =
+        driver.executeQuery(534_687_270,
+        """SELECT ComplemetoEntity.tipo, ComplemetoEntity.id, ComplemetoEntity.nombre, ComplemetoEntity.precio FROM ComplemetoEntity WHERE tipo=?""",
+        mapper, 1) {
+      bindString(0, tipo)
+    }
+
+    override fun toString(): String = "database.sq:getComplementoByTipo"
   }
 }

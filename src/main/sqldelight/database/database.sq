@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> ae0fe9bb0bf8a79347dfd04e549c9d420426d3e3
 --ButacaEntity
 CREATE TABLE IF NOT EXISTS ButacaEntity(
     id TEXT PRIMARY KEY NOT NULL,
@@ -33,6 +29,7 @@ DELETE FROM ButacaEntity WHERE id=?;
 
 --ComplementoEntity
 CREATE TABLE IF NOT EXISTS ComplemetoEntity(
+    tipo TEXT NOT NULL ,
     id INTEGER PRIMARY KEY NOT NULL,
     nombre TEXT NOT NULL,
     precio INTEGER NOT NULL
@@ -44,8 +41,17 @@ SELECT * FROM ComplemetoEntity;
 getByIdComplemetoEntity:
 SELECT * FROM ComplemetoEntity WHERE id = ?;
 
+getComplementoByTipo:
+SELECT * FROM ComplemetoEntity WHERE tipo=?;
+
 updateComplementoEntity:
-UPDATE ComplemetoEntity SET id=?, nombre=?, precio=?;
+UPDATE ComplemetoEntity SET id=?, nombre=?, precio=?, tipo=?;
 
 deleteAllComplemetoEntity:
 DELETE FROM ComplemetoEntity;
+
+insertComplemento:
+INSERT INTO ComplemetoEntity(tipo,nombre,precio) VALUES(?,?,?);
+
+deleteComplementoByID:
+DELETE FROM ComplemetoEntity WHERE id=?;
