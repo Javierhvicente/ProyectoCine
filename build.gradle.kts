@@ -38,6 +38,10 @@ dependencies {
     implementation(platform("io.insert-koin:koin-annotations-bom:1.3.1")) // BOM
     implementation("io.insert-koin:koin-annotations") // Annotations
     ksp("io.insert-koin:koin-ksp-compiler:1.3.1") // KSP Compiler, debes poner el mismo que el de las anotaciones
+    //BD tradicional
+    implementation("org.xerial:sqlite-jdbc:3.45.2.0")
+    implementation("org.mybatis:mybatis:3.5.13")
+    testImplementation("org.jetbrains.kotlin:kotlin-test")
 
 
     testImplementation(kotlin("test"))

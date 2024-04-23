@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> ae0fe9bb0bf8a79347dfd04e549c9d420426d3e3
 --ButacaEntity
 CREATE TABLE IF NOT EXISTS ButacaEntity(
     id TEXT PRIMARY KEY NOT NULL,
