@@ -25,6 +25,9 @@ UPDATE ButacaEntity SET id=?, estado=?, tipo=?, precio=?;
 deleteAllButacaEntity:
 DELETE FROM ButacaEntity;
 
+deleteButacaId:
+DELETE FROM ButacaEntity WHERE id=?;
+
 --ComplementoEntity
 CREATE TABLE IF NOT EXISTS ComplemetoEntity(
     id INTEGER PRIMARY KEY NOT NULL,

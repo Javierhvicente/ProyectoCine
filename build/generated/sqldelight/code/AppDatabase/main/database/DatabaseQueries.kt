@@ -175,6 +175,15 @@ public class DatabaseQueries(
     }
   }
 
+  public fun deleteButacaId(id: String) {
+    driver.execute(401_122_092, """DELETE FROM ButacaEntity WHERE id=?""", 1) {
+          bindString(0, id)
+        }
+    notifyQueries(401_122_092) { emit ->
+      emit("ButacaEntity")
+    }
+  }
+
   public fun updateComplementoEntity(
     id: Long,
     nombre: String,

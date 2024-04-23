@@ -28,12 +28,6 @@ private class AppDatabaseImpl(
 
     override fun create(driver: SqlDriver): QueryResult.Value<Unit> {
       driver.execute(null, """
-          |CREATE TABLE IF NOT EXISTS ClienteEntity(
-          |    id TEXT PRIMARY KEY NOT NULL,
-          |    nombre TEXT NOT NULL
-          |)
-          """.trimMargin(), 0)
-      driver.execute(null, """
           |CREATE TABLE IF NOT EXISTS ButacaEntity(
           |    id TEXT PRIMARY KEY NOT NULL,
           |    estado TEXT NOT NULL,

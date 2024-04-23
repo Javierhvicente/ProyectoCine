@@ -10,13 +10,13 @@ fun ButacaEntity.toButaca():Butaca{
     var _estado:Estado?=null
     var _tipo:Tipo?=null
     when(this.tipo){
-        "Normal" -> _tipo = Tipo.NORMAL
+        "NORMAL" -> _tipo = Tipo.NORMAL
         "VIP"-> _tipo = Tipo.VIP
     }
     when(this.estado){
-        "Activa" -> _estado = Estado.ACTIVA
-        "Mantenimiento"-> _estado=Estado.MANTENIMIENTO
-        "OutServive"-> _estado=Estado.OUTSERVICE
+        "ACTIVA" -> _estado = Estado.ACTIVA
+        "MANTENIMIENTO"-> _estado=Estado.MANTENIMIENTO
+        "OUTSERVICE"-> _estado=Estado.OUTSERVICE
     }
     return Butaca(_id,_estado!!,_tipo!!)
 

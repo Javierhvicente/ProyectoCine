@@ -2,7 +2,6 @@ package org.example.productos.repositories.butaca
 
 
 
-import kotlinx.serialization.builtins.SetSerializer
 import org.example.database.SqlDelightManager
 import org.example.productos.mappers.butaca.toButaca
 import org.example.productos.models.Butaca
@@ -35,7 +34,7 @@ class ButacasRepositoryImpl:ButacasRepository {
 
     override fun save(producto: Butaca): Butaca {
         logger.debug { "Guardando butaca: $producto" }
-        
+
         db.transaction {
             db.insertarbutaca(
                 id = producto.id,
@@ -47,11 +46,24 @@ class ButacasRepositoryImpl:ButacasRepository {
         return producto
     }
 
-    override fun update(id: String, producto: Butaca): Butaca? {
-        TODO("Not yet implemented")
+    override fun update(id: String, butaca: Butaca): Butaca? {
+        logger.debug { "Actualizando butaca con id: $id" }
+        var result = this.findById(id) ?: return null
+
+        db.updateButacaEntity(
+            id = butaca.id,
+            estado = butaca.estado.toString(),
+            tipo = butaca.tipo.toString(),
+            precio = butaca.precio.toLong()
+        )
+        return result
     }
 
     override fun delete(id: String): Butaca? {
-        TODO("Not yet implemented")
+        logger.debug { "Borrando butaca con id: $id" }
+        val result = this.findById(id) ?: return null
+        db.deleteButacaId(id)
+        return result
     }
+    
 }
