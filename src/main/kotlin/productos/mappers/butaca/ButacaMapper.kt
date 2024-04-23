@@ -6,7 +6,7 @@ import org.example.productos.models.Estado
 import org.example.productos.models.Tipo
 
 fun ButacaEntity.toButaca():Butaca{
-    var _id:String=this.id
+    var _id=this.id
     var _estado:Estado?=null
     var _tipo:Tipo?=null
     when(this.tipo){
