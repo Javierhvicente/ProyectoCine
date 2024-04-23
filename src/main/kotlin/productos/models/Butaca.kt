@@ -19,7 +19,7 @@ class Butaca(
         }
     }
 }
-enum class Estado{
+enum class Estado {
     ACTIVA,
     MANTENIMIENTO,
     OUTSERVICE
