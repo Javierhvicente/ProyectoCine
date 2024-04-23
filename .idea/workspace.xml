@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d4b416f-b590-47c3-a441-b0cb048309dc" name="Changes" comment="Repo de clientes y DatabaseManager sin SqlDelight." />
+    <list default="true" id="9d4b416f-b590-47c3-a441-b0cb048309dc" name="Changes" comment="Repo de clientes y DatabaseManager sin SqlDelight.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,23 +74,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.PruebaDB [clean].executor": "Run",
-    "Gradle.PruebaDB [generateMainAppDatabaseInterface].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "stored_options": "{\"dialectConnections\":{\"app.cash.sqldelight.dialects.sqlite_3_18.SqliteDialect\":{\"orderedOptions\":[],\"serializedProperties\":{}}}}",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.PruebaDB [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PruebaDB [generateMainAppDatabaseInterface].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;stored_options&quot;: &quot;{\&quot;dialectConnections\&quot;:{\&quot;app.cash.sqldelight.dialects.sqlite_3_18.SqliteDialect\&quot;:{\&quot;orderedOptions\&quot;:[],\&quot;serializedProperties\&quot;:{}}}}&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="cliente.models" />
@@ -151,6 +153,7 @@
       <set>
         <option value="jdk-17.0.9-liberica-17.0.9-f644763e9732-bdbb3023" />
         <option value="jdk-21.0.1-liberica-21.0.1-f644763e9732-864bc1eb" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-f644763e9732-c0c073db" />
       </set>
     </attachedChunks>
   </component>
@@ -164,6 +167,9 @@
       <updated>1713809019715</updated>
       <workItem from="1713809020861" duration="2528000" />
       <workItem from="1713860715635" duration="1537000" />
+      <workItem from="1713862383671" duration="107000" />
+      <workItem from="1713880443196" duration="42000" />
+      <workItem from="1713893540878" duration="39000" />
     </task>
     <task id="LOCAL-00001" summary="Repo de clientes y DatabaseManager sin SqlDelight.">
       <option name="closed" value="true" />
@@ -173,7 +179,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713862237455</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Repo de clientes y DatabaseManager sin SqlDelight.">
+      <option name="closed" value="true" />
+      <created>1713862408097</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713862408097</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Repo de clientes y DatabaseManager sin SqlDelight.">
+      <option name="closed" value="true" />
+      <created>1713862421793</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713862421793</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
