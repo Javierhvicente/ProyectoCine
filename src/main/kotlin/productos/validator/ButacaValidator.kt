@@ -4,15 +4,26 @@ import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok
 import org.example.productos.errors.butaca.ButacaError
 import org.example.productos.models.Butaca
+import com.github.michaelbull.result.Result
 
 class ButacaValidator {
 
-    fun validarButaca(butaca:Butaca) {
+    fun validarFecha(fecha:String):Boolean{
+        if (fecha.length != 10) return false
+        val fechaSeparada= fecha.split("/")
+        if (fechaSeparada[0].length != 4) return false
+        if (fechaSeparada[1].length != 2) return false
+        if (fechaSeparada[2].length != 2) return false
+        if (fechaSeparada[2].toInt() !in 1..31) return false
+        if (fechaSeparada[1].toInt() !in 1..12) return false
+        return true
+    }
+    fun validarButaca(butaca:Butaca):Result<Butaca, ButacaError> {
         when {
             !validarId(butaca.id) -> Err(ButacaError.IdNoValido("El ID: ${butaca.id} no es valido"))
             else -> Ok(butaca)
         }
-
+        return Ok(butaca)
     }
 
     private fun validarId(id: String) :Boolean{

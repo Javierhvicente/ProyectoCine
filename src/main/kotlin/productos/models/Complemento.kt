@@ -1,3 +1,5 @@
 package org.example.productos.models
 
-abstract class Complemento:Producto()
+abstract class Complemento(
+    val id:String
+):Producto()
