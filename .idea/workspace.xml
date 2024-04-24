@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9d4b416f-b590-47c3-a441-b0cb048309dc" name="Changes" comment="Repo de clientes y DatabaseManager sin SqlDelight.">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 =======
       <change afterPath="$PROJECT_DIR$/src/main/kotlin/productos/exceptions/complemento/ComplemntoError.kt" afterDir="false" />
@@ -19,71 +20,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+=======
+>>>>>>> 1ef1fe2ab750bc4a15aeed3ddf14bde7870b51f3
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/META-INF/CineProyecto.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/ButacaEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/ComplemetoEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$GetByIdButacaEntityQuery$execute$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$GetByIdButacaEntityQuery.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$GetByIdComplemetoEntityQuery$execute$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$GetByIdComplemetoEntityQuery.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$GetbutacaByTipoQuery$execute$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$GetbutacaByTipoQuery.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$deleteAllButacaEntity$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$deleteAllComplemetoEntity$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$getAllButacaEntity$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$getAllButacaEntity$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$getAllComplemetoEntity$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$getAllComplemetoEntity$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$getByIdButacaEntity$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$getByIdButacaEntity$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$getByIdComplemetoEntity$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$getByIdComplemetoEntity$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$getbutacaByTipo$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$getbutacaByTipo$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$insertarbutaca$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$insertarbutaca$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$updateButacaEntity$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$updateButacaEntity$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$updateComplementoEntity$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries$updateComplementoEntity$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/database/DatabaseQueries.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/dev/javierhvicente/database/AppDatabase$Companion.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/dev/javierhvicente/database/AppDatabase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/dev/javierhvicente/database/CineProyecto/AppDatabaseImpl$Schema.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/dev/javierhvicente/database/CineProyecto/AppDatabaseImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/dev/javierhvicente/database/CineProyecto/AppDatabaseImplKt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/MainKt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/cliente/models/Cliente.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/config/Config.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/config/ConfigKt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/database/SqlDelightManager$databaseQueries$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/database/SqlDelightManager$removeAllData$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/database/SqlDelightManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/database/SqlDelightManagerKt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/errors/butaca/ButacaError$IdNoValido.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/errors/butaca/ButacaError.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/mappers/butaca/ButacaMapperKt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/models/Bebida$WhenMappings.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/models/Bebida.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/models/Butaca$WhenMappings.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/models/Butaca.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/models/CategoriaBebida.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/models/CategoriaComida.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/models/Comida$WhenMappings.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/models/Comida.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/models/Complementos.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/models/Estado.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/models/Ocupacion.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/models/Producto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/models/Tipo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/repositories/butaca/ButacasRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/repositories/butaca/ButacasRepositoryImpl$save$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/repositories/butaca/ButacasRepositoryImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/repositories/butaca/ButacasRepositoryImplKt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/org/example/productos/validator/ButacaValidator.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/generated/sqldelight/code/AppDatabase/main/database/ComplemetoEntity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sqldelight/code/AppDatabase/main/database/ComplemetoEntity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/generated/sqldelight/code/AppDatabase/main/database/DatabaseQueries.kt" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sqldelight/code/AppDatabase/main/database/DatabaseQueries.kt" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/build/generated/sqldelight/code/AppDatabase/main/dev/javierhvicente/database/AppDatabase.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/generated/sqldelight/code/AppDatabase/main/dev/javierhvicente/database/CineProyecto/AppDatabaseImpl.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab" beforeDir="false" />
@@ -249,6 +191,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/productos/repositories/butaca/ButacasRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/productos/repositories/butaca/ButacasRepositoryImpl.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/sqldelight/database/database.sq" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/sqldelight/database/database.sq" afterDir="false" />
 >>>>>>> b6d41c9d6fbea29e6f3d8049300b4209793320de
+=======
+>>>>>>> 1ef1fe2ab750bc4a15aeed3ddf14bde7870b51f3
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -319,6 +263,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
 <<<<<<< HEAD
@@ -344,14 +289,33 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
 <<<<<<< HEAD
 =======
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.ProyectoCine [build].executor": "Run",
+    "Gradle.PruebaDB [clean].executor": "Run",
+    "Gradle.PruebaDB [generateMainAppDatabaseInterface].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "develop",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "stored_options": "{\"dialectConnections\":{\"app.cash.sqldelight.dialects.sqlite_3_18.SqliteDialect\":{\"orderedOptions\":[],\"serializedProperties\":{}}}}",
+    "vue.rearranger.settings.migration": "true"
+>>>>>>> 1ef1fe2ab750bc4a15aeed3ddf14bde7870b51f3
   },
-  &quot;keyToStringList&quot;: {
-    &quot;kotlin-gradle-user-dirs&quot;: [
-      &quot;C:\\Users\\anasm\\.gradle&quot;
+  "keyToStringList": {
+    "kotlin-gradle-user-dirs": [
+      "C:\\Users\\anasm\\.gradle"
     ]
 >>>>>>> b6d41c9d6fbea29e6f3d8049300b4209793320de
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="cliente.models" />
@@ -457,12 +421,17 @@
       <workItem from="1713809020861" duration="2528000" />
       <workItem from="1713860715635" duration="1537000" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1713862383671" duration="107000" />
       <workItem from="1713880443196" duration="42000" />
       <workItem from="1713893540878" duration="39000" />
 =======
       <workItem from="1713866695561" duration="2685000" />
 >>>>>>> b6d41c9d6fbea29e6f3d8049300b4209793320de
+=======
+      <workItem from="1713866695561" duration="3212000" />
+      <workItem from="1713880430920" duration="6725000" />
+>>>>>>> 1ef1fe2ab750bc4a15aeed3ddf14bde7870b51f3
     </task>
     <task id="LOCAL-00001" summary="Repo de clientes y DatabaseManager sin SqlDelight.">
       <option name="closed" value="true" />

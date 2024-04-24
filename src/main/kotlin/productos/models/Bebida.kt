@@ -2,7 +2,7 @@ package org.example.productos.models
 
 class Bebida(
     val nombre:CategoriaBebida
-):Complemento() {
+):Complemento(nombre.toString()) {
     val precio:Double
     init {
         when(nombre){
