@@ -2,9 +2,15 @@ package org.example.cache
 
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok
+<<<<<<< HEAD
 import org.example.cache.errors.CacheError
 import com.github.michaelbull.result.Result
 import org.lighthousegames.logging.logging
+=======
+import org.lighthousegames.logging.logging
+import com.github.michaelbull.result.Result
+import org.example.cache.errors.CacheError
+>>>>>>> feature/serviceCliente
 
 private val logger = logging()
 
