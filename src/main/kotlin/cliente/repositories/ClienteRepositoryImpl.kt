@@ -7,7 +7,6 @@ import java.sql.ResultSet
 
 private val logger = logging()
 class ClienteRepositoryImpl: ClienteRepository {
-
     private fun ResultSet.toCliente(): Cliente {
         return Cliente(
             id = getString("id"),

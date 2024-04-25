@@ -1,16 +1,14 @@
 package org.example.cliente.validators
 
-import com.github.michaelbull.result.Err
-import com.github.michaelbull.result.Ok
-import com.github.michaelbull.result.Result
-import org.example.cliente.errors.ClienteErrors
+import org.example.cliente.Exceptions.ClienteException
 import org.example.cliente.models.Cliente
 
 class ClienteValidator {
-    fun validate(cliente: Cliente): Result<Cliente, ClienteErrors>{
-        return when{
-            cliente.nombre.isBlank() -> Err(ClienteErrors.clienteInvalido("El nombre del personaje no puede estar vacío"))
-            else -> Ok(cliente)
+    fun validate(cliente: Cliente): Cliente{
+        val nombreRegex = Regex("[a-zA-Z0-9]{3,15}")
+        if (!cliente.nombre.matches(nombreRegex) && cliente.nombre.isBlank()){
+            throw ClienteException.ClienteInvalido("El nombre deberá contener entre 3 y 15 caracteres")
         }
+        return cliente
     }
 }

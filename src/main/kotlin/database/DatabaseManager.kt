@@ -8,6 +8,7 @@ import java.io.Reader
 import java.sql.Connection
 import java.sql.DriverManager
 
+
 private val logger = logging()
 
 object DataBaseManager : AutoCloseable {
