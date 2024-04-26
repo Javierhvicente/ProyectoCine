@@ -1,11 +1,11 @@
 package org.example.productos.complementos.mappers
 
-import database.ComplemetoEntity
+import database.ComplementoEntity
+import org.example.productos.complementos.Exceptions.ComplementoException
 import org.example.productos.complementos.dto.ComplementoDto
-import org.example.productos.complementos.exceptions.ComplemntoException
 import org.example.productos.models.*
 
-fun ComplemetoEntity.toComplemento(): Complemento {
+fun ComplementoEntity.toComplemento(): Complemento {
     val _nombre: String = this.nombre
     val _tipo: String = this.tipo
     when (_tipo) {
@@ -25,7 +25,7 @@ fun ComplemetoEntity.toComplemento(): Complemento {
         }
 
     }
-    throw ComplemntoException.TipoNoValido("Tipo no valido")
+    throw ComplementoException.TipoInvalido("Tipo no valido")
 }
 
 fun ComplementoDto.toComplemento(): Complemento {
@@ -36,7 +36,7 @@ fun ComplementoDto.toComplemento(): Complemento {
         "AGUA" -> return Bebida(CategoriaBebida.AGUA)
         "REFRESCO" -> return Bebida(CategoriaBebida.REFRESCOS)
     }
-    throw ComplemntoException.TipoNoValido("Tipo no valido")
+    throw ComplementoException.TipoInvalido("Tipo no valido")
 }
 
 fun Complemento.toDto(): ComplementoDto {
@@ -54,6 +54,6 @@ fun Complemento.toDto(): ComplementoDto {
                 CategoriaComida.FRUTOSSECOS-> return ComplementoDto("COMIDA","FRUTOSECOS",this.precio.toString())
             }
         }
-        else -> throw ComplemntoException.TipoNoValido("Tipo no valido")
+        else -> throw ComplementoException.TipoInvalido("Tipo no valido")
     }
 }

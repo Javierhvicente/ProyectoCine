@@ -28,7 +28,7 @@ deleteButacaId:
 DELETE FROM ButacaEntity WHERE id=?;
 
 --ComplementoEntity
-CREATE TABLE IF NOT EXISTS ComplemetoEntity(
+CREATE TABLE IF NOT EXISTS ComplementoEntity(
     tipo TEXT NOT NULL ,
     id INTEGER PRIMARY KEY NOT NULL,
     nombre TEXT NOT NULL,
@@ -36,22 +36,22 @@ CREATE TABLE IF NOT EXISTS ComplemetoEntity(
 );
 -- Crud ComplemetoEntity
 getAllComplemetoEntity:
-SELECT * FROM ComplemetoEntity;
+SELECT * FROM ComplementoEntity;
 
 getByIdComplemetoEntity:
-SELECT * FROM ComplemetoEntity WHERE id = ?;
+SELECT * FROM ComplementoEntity WHERE id = ?;
 
 getComplementoByTipo:
-SELECT * FROM ComplemetoEntity WHERE tipo=?;
+SELECT * FROM ComplementoEntity WHERE tipo=?;
 
 updateComplementoEntity:
-UPDATE ComplemetoEntity SET id=?, nombre=?, precio=?, tipo=?;
+UPDATE ComplementoEntity SET id=?, nombre=?, precio=?, tipo=?;
 
 deleteAllComplemetoEntity:
-DELETE FROM ComplemetoEntity;
+DELETE FROM ComplementoEntity;
 
 insertComplemento:
-INSERT INTO ComplemetoEntity(tipo,nombre,precio) VALUES(?,?,?);
+INSERT INTO ComplementoEntity(tipo,nombre,precio) VALUES(?,?,?);
 
 deleteComplementoByID:
-DELETE FROM ComplemetoEntity WHERE id=?;
+DELETE FROM ComplementoEntity WHERE id=?;
