@@ -103,7 +103,7 @@ DELETE FROM VentaEntity WHERE id = ?;
 CREATE TABLE IF NOT EXISTS LineaVentaEntity (
      id TEXT PRIMARY KEY,
      venta_id TEXT NOT NULL REFERENCES VentaEntity(id),
-     Butaca_id INTEGER NOT NULL REFERENCES ButacaEntity(id),
+     Butaca_id TEXT NOT NULL REFERENCES ButacaEntity(id),
      Complemento1_id INTEGER REFERENCES ComplementoEntity(id) DEFAULT NULL,
      Complemento2_id INTEGER REFERENCES ComplementoEntity(id) DEFAULT NULL,
      Complemento3_id INTEGER REFERENCES ComplementoEntity(id) DEFAULT NULL,
