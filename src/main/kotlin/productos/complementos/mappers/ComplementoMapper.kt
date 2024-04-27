@@ -31,7 +31,7 @@ fun ComplemetoEntity.toComplemento(): Complemento {
 fun ComplementoDto.toComplemento(): Complemento {
     when(this.nombre){
         "PALOMITAS" -> return Comida(CategoriaComida.PALOMITAS)
-        "FRUTOSSECOS" -> return Comida(CategoriaComida.FRUTOSSECOS)
+        "FRUTOS SECOS" -> return Comida(CategoriaComida.FRUTOSSECOS)
         "PATATAS" -> return Comida(CategoriaComida.PATATAS)
         "AGUA" -> return Bebida(CategoriaBebida.AGUA)
         "REFRESCO" -> return Bebida(CategoriaBebida.REFRESCOS)
@@ -51,7 +51,7 @@ fun Complemento.toDto(): ComplementoDto {
             when(this.nombre){
                 CategoriaComida.PALOMITAS-> return ComplementoDto("COMIDA","PALOMITAS",this.precio.toString())
                 CategoriaComida.PATATAS-> return ComplementoDto("COMIDA","PATATAS",this.precio.toString())
-                CategoriaComida.FRUTOSSECOS-> return ComplementoDto("COMIDA","FRUTOSECOS",this.precio.toString())
+                CategoriaComida.FRUTOSSECOS-> return ComplementoDto("COMIDA","FRUTOS SECOS",this.precio.toString())
             }
         }
         else -> throw ComplemntoException.TipoNoValido("Tipo no valido")

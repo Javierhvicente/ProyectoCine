@@ -2,7 +2,7 @@ package org.example.productos.models
 
 class Butaca(
     val id:String,
-    val estado: Estado,
+    var estado: Estado,
     val tipo:Tipo
 ):Producto() {
     val precio:Double
