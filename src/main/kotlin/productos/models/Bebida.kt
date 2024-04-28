@@ -10,6 +10,9 @@ class Bebida(
             CategoriaBebida.AGUA->precio=2.0
         }
     }
+    override fun toString(): String {
+        return "$nombre: $precio €"
+    }
 }
 
 enum class CategoriaBebida{

@@ -18,6 +18,10 @@ class Butaca(
             ocupacion=Ocupacion.LIBRE
         }
     }
+
+    override fun toString(): String {
+        return "$id, $tipo: $precio €"
+    }
 }
 enum class Estado {
     ACTIVA,
