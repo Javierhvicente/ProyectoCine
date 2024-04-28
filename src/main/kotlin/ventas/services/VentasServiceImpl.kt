@@ -52,15 +52,15 @@ class VentasServiceImpl(
                 ?: return Err(VentaError.VentaNoValida("Producto no encontrado con id: ${it.butaca.id}"))
         }
         lineas.forEach {
-            it.complemento1?.let { it1 -> butacasRepository.findById(it1.id) }
+            it.complemento1?.let { it1 -> complementoRepository.findById(it1.id) }
                 ?: return Err(VentaError.VentaNoEncontrada("Complemento no encontrado con id: ${it.complemento1?.id}"))
         }
         lineas.forEach {
-            it.complemento3?.let { it1 -> butacasRepository.findById(it1.id) }
+            it.complemento3?.let { it1 -> complementoRepository.findById(it1.id) }
                 ?: return Err(VentaError.VentaNoEncontrada("Complemento no encontrado con id: ${it.complemento2?.id}"))
         }
         lineas.forEach {
-            it.complemento3?.let { it1 -> butacasRepository.findById(it1.id) }
+            it.complemento3?.let { it1 -> complementoRepository.findById(it1.id) }
                 ?: return Err(VentaError.VentaNoEncontrada("Complemento no encontrado con id: ${it.complemento3?.id}"))
         }
 

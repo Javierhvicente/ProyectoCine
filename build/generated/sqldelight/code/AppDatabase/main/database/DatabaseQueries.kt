@@ -6,6 +6,8 @@ import app.cash.sqldelight.db.QueryResult
 import app.cash.sqldelight.db.SqlCursor
 import app.cash.sqldelight.db.SqlDriver
 import kotlin.Any
+import kotlin.Boolean
+import kotlin.Double
 import kotlin.Long
 import kotlin.String
 
@@ -92,9 +94,9 @@ public class DatabaseQueries(
     id: Long,
     nombre: String,
     precio: Long,
-  ) -> T): Query<T> = Query(1_265_361_777, arrayOf("ComplemetoEntity"), driver, "database.sq",
+  ) -> T): Query<T> = Query(1_265_361_777, arrayOf("ComplementoEntity"), driver, "database.sq",
       "getAllComplemetoEntity",
-      "SELECT ComplemetoEntity.tipo, ComplemetoEntity.id, ComplemetoEntity.nombre, ComplemetoEntity.precio FROM ComplemetoEntity") {
+      "SELECT ComplementoEntity.tipo, ComplementoEntity.id, ComplementoEntity.nombre, ComplementoEntity.precio FROM ComplementoEntity") {
       cursor ->
     mapper(
       cursor.getString(0)!!,
@@ -104,9 +106,9 @@ public class DatabaseQueries(
     )
   }
 
-  public fun getAllComplemetoEntity(): Query<ComplemetoEntity> = getAllComplemetoEntity { tipo, id,
+  public fun getAllComplemetoEntity(): Query<ComplementoEntity> = getAllComplemetoEntity { tipo, id,
       nombre, precio ->
-    ComplemetoEntity(
+    ComplementoEntity(
       tipo,
       id,
       nombre,
@@ -128,9 +130,9 @@ public class DatabaseQueries(
     )
   }
 
-  public fun getByIdComplemetoEntity(id: Long): Query<ComplemetoEntity> =
+  public fun getByIdComplemetoEntity(id: Long): Query<ComplementoEntity> =
       getByIdComplemetoEntity(id) { tipo, id_, nombre, precio ->
-    ComplemetoEntity(
+    ComplementoEntity(
       tipo,
       id_,
       nombre,
@@ -152,13 +154,380 @@ public class DatabaseQueries(
     )
   }
 
-  public fun getComplementoByTipo(tipo: String): Query<ComplemetoEntity> =
+  public fun getComplementoByTipo(tipo: String): Query<ComplementoEntity> =
       getComplementoByTipo(tipo) { tipo_, id, nombre, precio ->
-    ComplemetoEntity(
+    ComplementoEntity(
       tipo_,
       id,
       nombre,
       precio
+    )
+  }
+
+  public fun <T : Any> selectAllVentas(mapper: (
+    id: String,
+    cliente_id: String,
+    total: Double,
+    created_at: String,
+    updated_at: String,
+    is_deleted: Long,
+  ) -> T): Query<T> = Query(-1_591_653_436, arrayOf("VentaEntity"), driver, "database.sq",
+      "selectAllVentas",
+      "SELECT VentaEntity.id, VentaEntity.cliente_id, VentaEntity.total, VentaEntity.created_at, VentaEntity.updated_at, VentaEntity.is_deleted FROM VentaEntity") {
+      cursor ->
+    mapper(
+      cursor.getString(0)!!,
+      cursor.getString(1)!!,
+      cursor.getDouble(2)!!,
+      cursor.getString(3)!!,
+      cursor.getString(4)!!,
+      cursor.getLong(5)!!
+    )
+  }
+
+  public fun selectAllVentas(): Query<VentaEntity> = selectAllVentas { id, cliente_id, total,
+      created_at, updated_at, is_deleted ->
+    VentaEntity(
+      id,
+      cliente_id,
+      total,
+      created_at,
+      updated_at,
+      is_deleted
+    )
+  }
+
+  public fun <T : Any> selectVentaById(id: String, mapper: (
+    id: String,
+    cliente_id: String,
+    total: Double,
+    created_at: String,
+    updated_at: String,
+    is_deleted: Long,
+  ) -> T): Query<T> = SelectVentaByIdQuery(id) { cursor ->
+    mapper(
+      cursor.getString(0)!!,
+      cursor.getString(1)!!,
+      cursor.getDouble(2)!!,
+      cursor.getString(3)!!,
+      cursor.getString(4)!!,
+      cursor.getLong(5)!!
+    )
+  }
+
+  public fun selectVentaById(id: String): Query<VentaEntity> = selectVentaById(id) { id_,
+      cliente_id, total, created_at, updated_at, is_deleted ->
+    VentaEntity(
+      id_,
+      cliente_id,
+      total,
+      created_at,
+      updated_at,
+      is_deleted
+    )
+  }
+
+  public fun existsVenta(id: String): Query<Boolean> = ExistsVentaQuery(id) { cursor ->
+    cursor.getBoolean(0)!!
+  }
+
+  public fun <T : Any> selectAllVentasByIsDeleted(is_deleted: Long, mapper: (
+    id: String,
+    cliente_id: String,
+    total: Double,
+    created_at: String,
+    updated_at: String,
+    is_deleted: Long,
+  ) -> T): Query<T> = SelectAllVentasByIsDeletedQuery(is_deleted) { cursor ->
+    mapper(
+      cursor.getString(0)!!,
+      cursor.getString(1)!!,
+      cursor.getDouble(2)!!,
+      cursor.getString(3)!!,
+      cursor.getString(4)!!,
+      cursor.getLong(5)!!
+    )
+  }
+
+  public fun selectAllVentasByIsDeleted(is_deleted: Long): Query<VentaEntity> =
+      selectAllVentasByIsDeleted(is_deleted) { id, cliente_id, total, created_at, updated_at,
+      is_deleted_ ->
+    VentaEntity(
+      id,
+      cliente_id,
+      total,
+      created_at,
+      updated_at,
+      is_deleted_
+    )
+  }
+
+  public fun <T : Any> selectVentaLastInserted(mapper: (
+    id: String,
+    cliente_id: String,
+    total: Double,
+    created_at: String,
+    updated_at: String,
+    is_deleted: Long,
+  ) -> T): Query<T> = Query(950_557_014, arrayOf("VentaEntity"), driver, "database.sq",
+      "selectVentaLastInserted",
+      "SELECT VentaEntity.id, VentaEntity.cliente_id, VentaEntity.total, VentaEntity.created_at, VentaEntity.updated_at, VentaEntity.is_deleted FROM VentaEntity WHERE id = last_insert_rowid()") {
+      cursor ->
+    mapper(
+      cursor.getString(0)!!,
+      cursor.getString(1)!!,
+      cursor.getDouble(2)!!,
+      cursor.getString(3)!!,
+      cursor.getString(4)!!,
+      cursor.getLong(5)!!
+    )
+  }
+
+  public fun selectVentaLastInserted(): Query<VentaEntity> = selectVentaLastInserted { id,
+      cliente_id, total, created_at, updated_at, is_deleted ->
+    VentaEntity(
+      id,
+      cliente_id,
+      total,
+      created_at,
+      updated_at,
+      is_deleted
+    )
+  }
+
+  public fun <T : Any> selectAllLineasVentas(mapper: (
+    id: String,
+    venta_id: String,
+    Butaca_id: String,
+    Complemento1_id: Long?,
+    Complemento2_id: Long?,
+    Complemento3_id: Long?,
+    cantidad: Long,
+    precio: Double,
+    created_at: String,
+    updated_at: String,
+    is_deleted: Long,
+  ) -> T): Query<T> = Query(1_730_545_866, arrayOf("LineaVentaEntity"), driver, "database.sq",
+      "selectAllLineasVentas",
+      "SELECT LineaVentaEntity.id, LineaVentaEntity.venta_id, LineaVentaEntity.Butaca_id, LineaVentaEntity.Complemento1_id, LineaVentaEntity.Complemento2_id, LineaVentaEntity.Complemento3_id, LineaVentaEntity.cantidad, LineaVentaEntity.precio, LineaVentaEntity.created_at, LineaVentaEntity.updated_at, LineaVentaEntity.is_deleted FROM LineaVentaEntity") {
+      cursor ->
+    mapper(
+      cursor.getString(0)!!,
+      cursor.getString(1)!!,
+      cursor.getString(2)!!,
+      cursor.getLong(3),
+      cursor.getLong(4),
+      cursor.getLong(5),
+      cursor.getLong(6)!!,
+      cursor.getDouble(7)!!,
+      cursor.getString(8)!!,
+      cursor.getString(9)!!,
+      cursor.getLong(10)!!
+    )
+  }
+
+  public fun selectAllLineasVentas(): Query<LineaVentaEntity> = selectAllLineasVentas { id,
+      venta_id, Butaca_id, Complemento1_id, Complemento2_id, Complemento3_id, cantidad, precio,
+      created_at, updated_at, is_deleted ->
+    LineaVentaEntity(
+      id,
+      venta_id,
+      Butaca_id,
+      Complemento1_id,
+      Complemento2_id,
+      Complemento3_id,
+      cantidad,
+      precio,
+      created_at,
+      updated_at,
+      is_deleted
+    )
+  }
+
+  public fun <T : Any> selectLineaVentaById(id: String, mapper: (
+    id: String,
+    venta_id: String,
+    Butaca_id: String,
+    Complemento1_id: Long?,
+    Complemento2_id: Long?,
+    Complemento3_id: Long?,
+    cantidad: Long,
+    precio: Double,
+    created_at: String,
+    updated_at: String,
+    is_deleted: Long,
+  ) -> T): Query<T> = SelectLineaVentaByIdQuery(id) { cursor ->
+    mapper(
+      cursor.getString(0)!!,
+      cursor.getString(1)!!,
+      cursor.getString(2)!!,
+      cursor.getLong(3),
+      cursor.getLong(4),
+      cursor.getLong(5),
+      cursor.getLong(6)!!,
+      cursor.getDouble(7)!!,
+      cursor.getString(8)!!,
+      cursor.getString(9)!!,
+      cursor.getLong(10)!!
+    )
+  }
+
+  public fun selectLineaVentaById(id: String): Query<LineaVentaEntity> = selectLineaVentaById(id) {
+      id_, venta_id, Butaca_id, Complemento1_id, Complemento2_id, Complemento3_id, cantidad, precio,
+      created_at, updated_at, is_deleted ->
+    LineaVentaEntity(
+      id_,
+      venta_id,
+      Butaca_id,
+      Complemento1_id,
+      Complemento2_id,
+      Complemento3_id,
+      cantidad,
+      precio,
+      created_at,
+      updated_at,
+      is_deleted
+    )
+  }
+
+  public fun <T : Any> selectAllLineasVentaByVentaId(venta_id: String, mapper: (
+    id: String,
+    venta_id: String,
+    Butaca_id: String,
+    Complemento1_id: Long?,
+    Complemento2_id: Long?,
+    Complemento3_id: Long?,
+    cantidad: Long,
+    precio: Double,
+    created_at: String,
+    updated_at: String,
+    is_deleted: Long,
+  ) -> T): Query<T> = SelectAllLineasVentaByVentaIdQuery(venta_id) { cursor ->
+    mapper(
+      cursor.getString(0)!!,
+      cursor.getString(1)!!,
+      cursor.getString(2)!!,
+      cursor.getLong(3),
+      cursor.getLong(4),
+      cursor.getLong(5),
+      cursor.getLong(6)!!,
+      cursor.getDouble(7)!!,
+      cursor.getString(8)!!,
+      cursor.getString(9)!!,
+      cursor.getLong(10)!!
+    )
+  }
+
+  public fun selectAllLineasVentaByVentaId(venta_id: String): Query<LineaVentaEntity> =
+      selectAllLineasVentaByVentaId(venta_id) { id, venta_id_, Butaca_id, Complemento1_id,
+      Complemento2_id, Complemento3_id, cantidad, precio, created_at, updated_at, is_deleted ->
+    LineaVentaEntity(
+      id,
+      venta_id_,
+      Butaca_id,
+      Complemento1_id,
+      Complemento2_id,
+      Complemento3_id,
+      cantidad,
+      precio,
+      created_at,
+      updated_at,
+      is_deleted
+    )
+  }
+
+  public fun <T : Any> selectAllLineasVentasByIsDeleted(is_deleted: Long, mapper: (
+    id: String,
+    venta_id: String,
+    Butaca_id: String,
+    Complemento1_id: Long?,
+    Complemento2_id: Long?,
+    Complemento3_id: Long?,
+    cantidad: Long,
+    precio: Double,
+    created_at: String,
+    updated_at: String,
+    is_deleted: Long,
+  ) -> T): Query<T> = SelectAllLineasVentasByIsDeletedQuery(is_deleted) { cursor ->
+    mapper(
+      cursor.getString(0)!!,
+      cursor.getString(1)!!,
+      cursor.getString(2)!!,
+      cursor.getLong(3),
+      cursor.getLong(4),
+      cursor.getLong(5),
+      cursor.getLong(6)!!,
+      cursor.getDouble(7)!!,
+      cursor.getString(8)!!,
+      cursor.getString(9)!!,
+      cursor.getLong(10)!!
+    )
+  }
+
+  public fun selectAllLineasVentasByIsDeleted(is_deleted: Long): Query<LineaVentaEntity> =
+      selectAllLineasVentasByIsDeleted(is_deleted) { id, venta_id, Butaca_id, Complemento1_id,
+      Complemento2_id, Complemento3_id, cantidad, precio, created_at, updated_at, is_deleted_ ->
+    LineaVentaEntity(
+      id,
+      venta_id,
+      Butaca_id,
+      Complemento1_id,
+      Complemento2_id,
+      Complemento3_id,
+      cantidad,
+      precio,
+      created_at,
+      updated_at,
+      is_deleted_
+    )
+  }
+
+  public fun <T : Any> selectLineaVentaLastInserted(mapper: (
+    id: String,
+    venta_id: String,
+    Butaca_id: String,
+    Complemento1_id: Long?,
+    Complemento2_id: Long?,
+    Complemento3_id: Long?,
+    cantidad: Long,
+    precio: Double,
+    created_at: String,
+    updated_at: String,
+    is_deleted: Long,
+  ) -> T): Query<T> = Query(503_588_145, arrayOf("LineaVentaEntity"), driver, "database.sq",
+      "selectLineaVentaLastInserted",
+      "SELECT LineaVentaEntity.id, LineaVentaEntity.venta_id, LineaVentaEntity.Butaca_id, LineaVentaEntity.Complemento1_id, LineaVentaEntity.Complemento2_id, LineaVentaEntity.Complemento3_id, LineaVentaEntity.cantidad, LineaVentaEntity.precio, LineaVentaEntity.created_at, LineaVentaEntity.updated_at, LineaVentaEntity.is_deleted FROM LineaVentaEntity WHERE id = last_insert_rowid()") {
+      cursor ->
+    mapper(
+      cursor.getString(0)!!,
+      cursor.getString(1)!!,
+      cursor.getString(2)!!,
+      cursor.getLong(3),
+      cursor.getLong(4),
+      cursor.getLong(5),
+      cursor.getLong(6)!!,
+      cursor.getDouble(7)!!,
+      cursor.getString(8)!!,
+      cursor.getString(9)!!,
+      cursor.getLong(10)!!
+    )
+  }
+
+  public fun selectLineaVentaLastInserted(): Query<LineaVentaEntity> =
+      selectLineaVentaLastInserted { id, venta_id, Butaca_id, Complemento1_id, Complemento2_id,
+      Complemento3_id, cantidad, precio, created_at, updated_at, is_deleted ->
+    LineaVentaEntity(
+      id,
+      venta_id,
+      Butaca_id,
+      Complemento1_id,
+      Complemento2_id,
+      Complemento3_id,
+      cantidad,
+      precio,
+      created_at,
+      updated_at,
+      is_deleted
     )
   }
 
@@ -220,7 +589,7 @@ public class DatabaseQueries(
     precio: Long,
     tipo: String,
   ) {
-    driver.execute(634_510_139, """UPDATE ComplemetoEntity SET id=?, nombre=?, precio=?, tipo=?""",
+    driver.execute(634_510_139, """UPDATE ComplementoEntity SET id=?, nombre=?, precio=?, tipo=?""",
         4) {
           bindLong(0, id)
           bindString(1, nombre)
@@ -228,14 +597,14 @@ public class DatabaseQueries(
           bindString(3, tipo)
         }
     notifyQueries(634_510_139) { emit ->
-      emit("ComplemetoEntity")
+      emit("ComplementoEntity")
     }
   }
 
   public fun deleteAllComplemetoEntity() {
-    driver.execute(1_229_557_100, """DELETE FROM ComplemetoEntity""", 0)
+    driver.execute(1_229_557_100, """DELETE FROM ComplementoEntity""", 0)
     notifyQueries(1_229_557_100) { emit ->
-      emit("ComplemetoEntity")
+      emit("ComplementoEntity")
     }
   }
 
@@ -245,22 +614,158 @@ public class DatabaseQueries(
     precio: Long,
   ) {
     driver.execute(-1_635_732_152,
-        """INSERT INTO ComplemetoEntity(tipo,nombre,precio) VALUES(?,?,?)""", 3) {
+        """INSERT INTO ComplementoEntity(tipo,nombre,precio) VALUES(?,?,?)""", 3) {
           bindString(0, tipo)
           bindString(1, nombre)
           bindLong(2, precio)
         }
     notifyQueries(-1_635_732_152) { emit ->
-      emit("ComplemetoEntity")
+      emit("ComplementoEntity")
     }
   }
 
   public fun deleteComplementoByID(id: Long) {
-    driver.execute(-1_079_616_536, """DELETE FROM ComplemetoEntity WHERE id=?""", 1) {
+    driver.execute(-1_079_616_536, """DELETE FROM ComplementoEntity WHERE id=?""", 1) {
           bindLong(0, id)
         }
     notifyQueries(-1_079_616_536) { emit ->
-      emit("ComplemetoEntity")
+      emit("ComplementoEntity")
+    }
+  }
+
+  public fun removeAllVentas() {
+    driver.execute(1_063_584_060, """DELETE FROM VentaEntity""", 0)
+    notifyQueries(1_063_584_060) { emit ->
+      emit("VentaEntity")
+    }
+  }
+
+  public fun insertVenta(
+    id: String,
+    cliente_id: String,
+    total: Double,
+    created_at: String,
+    updated_at: String,
+  ) {
+    driver.execute(-1_965_663_285,
+        """INSERT INTO VentaEntity (id, cliente_id, total, created_at, updated_at) VALUES (?, ?, ?, ?, ?)""",
+        5) {
+          bindString(0, id)
+          bindString(1, cliente_id)
+          bindDouble(2, total)
+          bindString(3, created_at)
+          bindString(4, updated_at)
+        }
+    notifyQueries(-1_965_663_285) { emit ->
+      emit("VentaEntity")
+    }
+  }
+
+  public fun updateVenta(
+    cliente_id: String,
+    total: Double,
+    updated_at: String,
+    is_deleted: Long,
+    id: String,
+  ) {
+    driver.execute(1_859_006_395,
+        """UPDATE VentaEntity SET cliente_id = ?, total = ?, updated_at = ?, is_deleted = ? WHERE id = ?""",
+        5) {
+          bindString(0, cliente_id)
+          bindDouble(1, total)
+          bindString(2, updated_at)
+          bindLong(3, is_deleted)
+          bindString(4, id)
+        }
+    notifyQueries(1_859_006_395) { emit ->
+      emit("VentaEntity")
+    }
+  }
+
+  public fun deleteVenta(id: String) {
+    driver.execute(1_310_629_913, """DELETE FROM VentaEntity WHERE id = ?""", 1) {
+          bindString(0, id)
+        }
+    notifyQueries(1_310_629_913) { emit ->
+      emit("VentaEntity")
+    }
+  }
+
+  public fun removeAllLineasVentas() {
+    driver.execute(-1_694_907_326, """DELETE FROM LineaVentaEntity""", 0)
+    notifyQueries(-1_694_907_326) { emit ->
+      emit("LineaVentaEntity")
+    }
+  }
+
+  public fun insertLineaVenta(
+    id: String,
+    venta_id: String,
+    Butaca_id: String,
+    Complemento1_id: Long?,
+    Complemento2_id: Long?,
+    Complemento3_id: Long?,
+    cantidad: Long,
+    precio: Double,
+    created_at: String,
+    updated_at: String,
+  ) {
+    driver.execute(536_059_200,
+        """INSERT INTO LineaVentaEntity (id, venta_id, Butaca_id, Complemento1_id, Complemento2_id, Complemento3_id, cantidad, precio, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+        10) {
+          bindString(0, id)
+          bindString(1, venta_id)
+          bindString(2, Butaca_id)
+          bindLong(3, Complemento1_id)
+          bindLong(4, Complemento2_id)
+          bindLong(5, Complemento3_id)
+          bindLong(6, cantidad)
+          bindDouble(7, precio)
+          bindString(8, created_at)
+          bindString(9, updated_at)
+        }
+    notifyQueries(536_059_200) { emit ->
+      emit("LineaVentaEntity")
+    }
+  }
+
+  public fun updateLineaVenta(
+    venta_id: String,
+    Butaca_id: String,
+    Complemento1_id: Long?,
+    Complemento2_id: Long?,
+    Complemento3_id: Long?,
+    cantidad: Long,
+    precio: Double,
+    updated_at: String,
+    is_deleted: Long,
+    id: String,
+  ) {
+    driver.execute(-965_558_448,
+        """UPDATE LineaVentaEntity SET venta_id = ?, Butaca_id = ?, Complemento1_id= ?, Complemento2_id = ?, Complemento3_id = ?, cantidad = ?, precio = ?, updated_at = ?, is_deleted = ? WHERE id = ?""",
+        10) {
+          bindString(0, venta_id)
+          bindString(1, Butaca_id)
+          bindLong(2, Complemento1_id)
+          bindLong(3, Complemento2_id)
+          bindLong(4, Complemento3_id)
+          bindLong(5, cantidad)
+          bindDouble(6, precio)
+          bindString(7, updated_at)
+          bindLong(8, is_deleted)
+          bindString(9, id)
+        }
+    notifyQueries(-965_558_448) { emit ->
+      emit("LineaVentaEntity")
+    }
+  }
+
+  public fun deleteLineaVenta(id: String) {
+    driver.execute(-1_202_726_478, """DELETE FROM LineaVentaEntity WHERE id = ?""", 1) {
+          bindString(0, id)
+        }
+    notifyQueries(-1_202_726_478) { emit ->
+      emit("LineaVentaEntity")
     }
   }
 
@@ -313,16 +818,16 @@ public class DatabaseQueries(
     mapper: (SqlCursor) -> T,
   ) : Query<T>(mapper) {
     override fun addListener(listener: Query.Listener) {
-      driver.addListener("ComplemetoEntity", listener = listener)
+      driver.addListener("ComplementoEntity", listener = listener)
     }
 
     override fun removeListener(listener: Query.Listener) {
-      driver.removeListener("ComplemetoEntity", listener = listener)
+      driver.removeListener("ComplementoEntity", listener = listener)
     }
 
     override fun <R> execute(mapper: (SqlCursor) -> QueryResult<R>): QueryResult<R> =
         driver.executeQuery(-196_566_082,
-        """SELECT ComplemetoEntity.tipo, ComplemetoEntity.id, ComplemetoEntity.nombre, ComplemetoEntity.precio FROM ComplemetoEntity WHERE id = ?""",
+        """SELECT ComplementoEntity.tipo, ComplementoEntity.id, ComplementoEntity.nombre, ComplementoEntity.precio FROM ComplementoEntity WHERE id = ?""",
         mapper, 1) {
       bindLong(0, id)
     }
@@ -335,20 +840,151 @@ public class DatabaseQueries(
     mapper: (SqlCursor) -> T,
   ) : Query<T>(mapper) {
     override fun addListener(listener: Query.Listener) {
-      driver.addListener("ComplemetoEntity", listener = listener)
+      driver.addListener("ComplementoEntity", listener = listener)
     }
 
     override fun removeListener(listener: Query.Listener) {
-      driver.removeListener("ComplemetoEntity", listener = listener)
+      driver.removeListener("ComplementoEntity", listener = listener)
     }
 
     override fun <R> execute(mapper: (SqlCursor) -> QueryResult<R>): QueryResult<R> =
         driver.executeQuery(534_687_270,
-        """SELECT ComplemetoEntity.tipo, ComplemetoEntity.id, ComplemetoEntity.nombre, ComplemetoEntity.precio FROM ComplemetoEntity WHERE tipo=?""",
+        """SELECT ComplementoEntity.tipo, ComplementoEntity.id, ComplementoEntity.nombre, ComplementoEntity.precio FROM ComplementoEntity WHERE tipo=?""",
         mapper, 1) {
       bindString(0, tipo)
     }
 
     override fun toString(): String = "database.sq:getComplementoByTipo"
+  }
+
+  private inner class SelectVentaByIdQuery<out T : Any>(
+    public val id: String,
+    mapper: (SqlCursor) -> T,
+  ) : Query<T>(mapper) {
+    override fun addListener(listener: Query.Listener) {
+      driver.addListener("VentaEntity", listener = listener)
+    }
+
+    override fun removeListener(listener: Query.Listener) {
+      driver.removeListener("VentaEntity", listener = listener)
+    }
+
+    override fun <R> execute(mapper: (SqlCursor) -> QueryResult<R>): QueryResult<R> =
+        driver.executeQuery(-1_874_348_198,
+        """SELECT VentaEntity.id, VentaEntity.cliente_id, VentaEntity.total, VentaEntity.created_at, VentaEntity.updated_at, VentaEntity.is_deleted FROM VentaEntity WHERE id = ?""",
+        mapper, 1) {
+      bindString(0, id)
+    }
+
+    override fun toString(): String = "database.sq:selectVentaById"
+  }
+
+  private inner class ExistsVentaQuery<out T : Any>(
+    public val id: String,
+    mapper: (SqlCursor) -> T,
+  ) : Query<T>(mapper) {
+    override fun addListener(listener: Query.Listener) {
+      driver.addListener("VentaEntity", listener = listener)
+    }
+
+    override fun removeListener(listener: Query.Listener) {
+      driver.removeListener("VentaEntity", listener = listener)
+    }
+
+    override fun <R> execute(mapper: (SqlCursor) -> QueryResult<R>): QueryResult<R> =
+        driver.executeQuery(232_634_376,
+        """SELECT COUNT(*) > 0 AS es_mayor_cero FROM VentaEntity WHERE id = ?""", mapper, 1) {
+      bindString(0, id)
+    }
+
+    override fun toString(): String = "database.sq:existsVenta"
+  }
+
+  private inner class SelectAllVentasByIsDeletedQuery<out T : Any>(
+    public val is_deleted: Long,
+    mapper: (SqlCursor) -> T,
+  ) : Query<T>(mapper) {
+    override fun addListener(listener: Query.Listener) {
+      driver.addListener("VentaEntity", listener = listener)
+    }
+
+    override fun removeListener(listener: Query.Listener) {
+      driver.removeListener("VentaEntity", listener = listener)
+    }
+
+    override fun <R> execute(mapper: (SqlCursor) -> QueryResult<R>): QueryResult<R> =
+        driver.executeQuery(-1_968_269_676,
+        """SELECT VentaEntity.id, VentaEntity.cliente_id, VentaEntity.total, VentaEntity.created_at, VentaEntity.updated_at, VentaEntity.is_deleted FROM VentaEntity WHERE is_deleted = ?""",
+        mapper, 1) {
+      bindLong(0, is_deleted)
+    }
+
+    override fun toString(): String = "database.sq:selectAllVentasByIsDeleted"
+  }
+
+  private inner class SelectLineaVentaByIdQuery<out T : Any>(
+    public val id: String,
+    mapper: (SqlCursor) -> T,
+  ) : Query<T>(mapper) {
+    override fun addListener(listener: Query.Listener) {
+      driver.addListener("LineaVentaEntity", listener = listener)
+    }
+
+    override fun removeListener(listener: Query.Listener) {
+      driver.removeListener("LineaVentaEntity", listener = listener)
+    }
+
+    override fun <R> execute(mapper: (SqlCursor) -> QueryResult<R>): QueryResult<R> =
+        driver.executeQuery(-800_158_155,
+        """SELECT LineaVentaEntity.id, LineaVentaEntity.venta_id, LineaVentaEntity.Butaca_id, LineaVentaEntity.Complemento1_id, LineaVentaEntity.Complemento2_id, LineaVentaEntity.Complemento3_id, LineaVentaEntity.cantidad, LineaVentaEntity.precio, LineaVentaEntity.created_at, LineaVentaEntity.updated_at, LineaVentaEntity.is_deleted FROM LineaVentaEntity WHERE id = ?""",
+        mapper, 1) {
+      bindString(0, id)
+    }
+
+    override fun toString(): String = "database.sq:selectLineaVentaById"
+  }
+
+  private inner class SelectAllLineasVentaByVentaIdQuery<out T : Any>(
+    public val venta_id: String,
+    mapper: (SqlCursor) -> T,
+  ) : Query<T>(mapper) {
+    override fun addListener(listener: Query.Listener) {
+      driver.addListener("LineaVentaEntity", listener = listener)
+    }
+
+    override fun removeListener(listener: Query.Listener) {
+      driver.removeListener("LineaVentaEntity", listener = listener)
+    }
+
+    override fun <R> execute(mapper: (SqlCursor) -> QueryResult<R>): QueryResult<R> =
+        driver.executeQuery(854_080_871,
+        """SELECT LineaVentaEntity.id, LineaVentaEntity.venta_id, LineaVentaEntity.Butaca_id, LineaVentaEntity.Complemento1_id, LineaVentaEntity.Complemento2_id, LineaVentaEntity.Complemento3_id, LineaVentaEntity.cantidad, LineaVentaEntity.precio, LineaVentaEntity.created_at, LineaVentaEntity.updated_at, LineaVentaEntity.is_deleted FROM LineaVentaEntity WHERE venta_id = ?""",
+        mapper, 1) {
+      bindString(0, venta_id)
+    }
+
+    override fun toString(): String = "database.sq:selectAllLineasVentaByVentaId"
+  }
+
+  private inner class SelectAllLineasVentasByIsDeletedQuery<out T : Any>(
+    public val is_deleted: Long,
+    mapper: (SqlCursor) -> T,
+  ) : Query<T>(mapper) {
+    override fun addListener(listener: Query.Listener) {
+      driver.addListener("LineaVentaEntity", listener = listener)
+    }
+
+    override fun removeListener(listener: Query.Listener) {
+      driver.removeListener("LineaVentaEntity", listener = listener)
+    }
+
+    override fun <R> execute(mapper: (SqlCursor) -> QueryResult<R>): QueryResult<R> =
+        driver.executeQuery(-278_160_946,
+        """SELECT LineaVentaEntity.id, LineaVentaEntity.venta_id, LineaVentaEntity.Butaca_id, LineaVentaEntity.Complemento1_id, LineaVentaEntity.Complemento2_id, LineaVentaEntity.Complemento3_id, LineaVentaEntity.cantidad, LineaVentaEntity.precio, LineaVentaEntity.created_at, LineaVentaEntity.updated_at, LineaVentaEntity.is_deleted FROM LineaVentaEntity WHERE is_deleted = ?""",
+        mapper, 1) {
+      bindLong(0, is_deleted)
+    }
+
+    override fun toString(): String = "database.sq:selectAllLineasVentasByIsDeleted"
   }
 }

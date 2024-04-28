@@ -28,6 +28,13 @@ private class AppDatabaseImpl(
 
     override fun create(driver: SqlDriver): QueryResult.Value<Unit> {
       driver.execute(null, """
+          |CREATE TABLE IF NOT EXISTS clientes(
+          |    id TEXT PRIMARY KEY NOT NULL,
+          |    nombre TEXT NOT NULL,
+          |    is_deleted INTEGER NOT NULL DEFAULT 0
+          |)
+          """.trimMargin(), 0)
+      driver.execute(null, """
           |CREATE TABLE IF NOT EXISTS ButacaEntity(
           |    id TEXT PRIMARY KEY NOT NULL,
           |    estado TEXT NOT NULL,
@@ -36,11 +43,36 @@ private class AppDatabaseImpl(
           |)
           """.trimMargin(), 0)
       driver.execute(null, """
-          |CREATE TABLE IF NOT EXISTS ComplemetoEntity(
+          |CREATE TABLE IF NOT EXISTS ComplementoEntity(
           |    tipo TEXT NOT NULL ,
           |    id INTEGER PRIMARY KEY NOT NULL,
           |    nombre TEXT NOT NULL,
           |    precio INTEGER NOT NULL
+          |)
+          """.trimMargin(), 0)
+      driver.execute(null, """
+          |CREATE TABLE IF NOT EXISTS VentaEntity (
+          |    id TEXT PRIMARY KEY,
+          |    cliente_id TEXT NOT NULL REFERENCES clientes(id),
+          |    total REAL NOT NULL,
+          |    created_at TEXT NOT NULL,
+          |    updated_at TEXT NOT NULL,
+          |    is_deleted INTEGER NOT NULL DEFAULT 0
+          |)
+          """.trimMargin(), 0)
+      driver.execute(null, """
+          |CREATE TABLE IF NOT EXISTS LineaVentaEntity (
+          |     id TEXT PRIMARY KEY,
+          |     venta_id TEXT NOT NULL REFERENCES VentaEntity(id),
+          |     Butaca_id TEXT NOT NULL REFERENCES ButacaEntity(id),
+          |     Complemento1_id INTEGER REFERENCES ComplementoEntity(id) DEFAULT NULL,
+          |     Complemento2_id INTEGER REFERENCES ComplementoEntity(id) DEFAULT NULL,
+          |     Complemento3_id INTEGER REFERENCES ComplementoEntity(id) DEFAULT NULL,
+          |     cantidad INTEGER NOT NULL,
+          |     precio REAL NOT NULL,
+          |     created_at TEXT NOT NULL,
+          |     updated_at TEXT NOT NULL,
+          |     is_deleted INTEGER NOT NULL DEFAULT 0
           |)
           """.trimMargin(), 0)
       return QueryResult.Unit

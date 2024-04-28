@@ -11,7 +11,7 @@ import org.lighthousegames.logging.logging
 
 private val logger= logging()
 class ComplementoRepositoryImpl: ComplementoRepository {
-    private val db  = SqlDelightManager().databaseQueries
+    private val db  = SqlDelightManager.databaseQueries
 
 
     override fun findAll(): List<Complemento> {
