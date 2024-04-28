@@ -1,7 +1,7 @@
 package org.example.productos.complementos.services
 
 import com.github.michaelbull.result.*
-import org.example.productos.complementos.cache.ComplementoCache
+import org.example.productos.complementos.cache.ComplementoCacheImpl
 import org.example.productos.complementos.errors.ComplementoError
 import org.example.productos.complementos.repositories.ComplementoRepository
 import org.example.productos.models.Complemento
@@ -12,7 +12,7 @@ import org.lighthousegames.logging.logging
 private val logger = logging()
 class ComplementoServiceImpl(
     private val repository: ComplementoRepository,
-    private val cache: ComplementoCache,
+    private val cache: ComplementoCacheImpl,
     private val storage: ComplementoStorage
 ): ComplementoService {
     override fun getAll(): Result<List<Complemento>, ComplementoError> {
