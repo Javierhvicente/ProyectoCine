@@ -1,7 +1,7 @@
 package org.example.productos.butaca.services
 
 import com.github.michaelbull.result.*
-import org.example.productos.butaca.cache.ButacasCache
+import org.example.productos.butaca.cache.ButacasCacheImpl
 import org.example.productos.butaca.repositories.ButacasRepository
 import org.example.productos.errors.butaca.ButacaError
 import org.example.productos.models.Butaca
@@ -14,7 +14,7 @@ private val logger = logging()
 class ButacaServiceImpl(
     private val repository: ButacasRepository,
     private val validador: ButacaValidator,
-    private val cache: ButacasCache,
+    private val cache: ButacasCacheImpl,
     private val storage: ButacaStorage
 ): ButacaService {
     override fun getAll(): Result<List<Butaca>, ButacaError> {
