@@ -51,7 +51,7 @@ object DataBaseManager : AutoCloseable {
     private fun initTablas() {
         logger.debug { "Creando tablas" }
         try {
-            val tablas = ClassLoader.getSystemResourceAsStream("tablas.sql")?.bufferedReader()!!
+            val tablas = ClassLoader.getSystemResourceAsStream("tables.sql")?.bufferedReader()!!
             scriptRunner(tablas, true)
             logger.debug { "Tabla estudiantes creada" }
         } catch (e: Exception) {
