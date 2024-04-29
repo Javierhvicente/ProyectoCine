@@ -316,7 +316,14 @@ class CineApp : KoinComponent{
 
         venta.mapBoth(
             success = {
-                ventaService.exportToHtml(venta.value,file)
+                ventaService.exportToHtml(venta.value,file).mapBoth(
+                    success = {
+
+                    },
+                    failure ={
+                        println("no creada")
+                    }
+                )
             },
             failure = {
                 println("Html no creado")

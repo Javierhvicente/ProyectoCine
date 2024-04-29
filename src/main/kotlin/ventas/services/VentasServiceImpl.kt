@@ -18,6 +18,7 @@ import java.io.File
 import java.util.*
 
 private val logger = logging()
+
 class VentasServiceImpl(
     private val ventasRepository: VentasRepository,
     private val clienteRepositoryImpl: ClienteRepository,
@@ -87,7 +88,6 @@ class VentasServiceImpl(
     override fun create(cliente: Cliente, lineas: List<LineaVenta>): Result<Venta, VentaError> {
         logger.debug { "Creando venta con Cliente y lineas: $cliente, $lineas" }
         return validateCliente(cliente)
-            .andThen { validateLineas(lineas) }
             .andThen { Ok(ventasRepository.save(Venta(cliente = cliente, lineas = lineas))) }
     }
 

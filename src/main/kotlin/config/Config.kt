@@ -6,7 +6,11 @@ import java.util.*
 import kotlin.io.path.Path
 
 private val logger = logging()
-
+/**
+ * clase config
+ * @author Yahya el hadri el bakkali
+ * @since 1.0
+ */
 object Config {
     var databaseUrl: String = "jdbc:sqlite:cine.db"
         private set

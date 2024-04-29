@@ -7,6 +7,11 @@ import org.example.config.Config
 import org.lighthousegames.logging.logging
 
 private val logger = logging()
+/**
+ * manejado de la base datos
+ * @author Yahya el hadri el bakkali
+ * @since 1.0
+ */
 object SqlDelightManager {
     val databaseQueries: DatabaseQueries by lazy { initQueries() }
 
