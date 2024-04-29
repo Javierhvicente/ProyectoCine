@@ -28,6 +28,8 @@ class CineApp : KoinComponent{
         val ventaService : VentasService by inject()
         val clienteService: ClienteService by inject()
 
+
+
         menu(butacasService,complementoService,ventaService,clienteService)
     }
 

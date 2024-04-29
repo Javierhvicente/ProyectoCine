@@ -11,22 +11,56 @@ import java.io.File
 import org.lighthousegames.logging.logging
 
 private val logger = logging()
+
+/**
+ * servicio de butacas
+ * @param  repository
+ * @param  validador
+ * @param  cache
+ * @param storage
+ * @author Yahya el hadri el bakkali
+ * @since 1.0
+ */
 class ButacaServiceImpl(
     private val repository: ButacasRepository,
     private val validador: ButacaValidator,
     private val cache: ButacasCacheImpl,
     private val storage: ButacaStorage
 ): ButacaService {
+    /**
+     * nos devuelve una lista de butacas
+     * @see repository
+     * @return lista de butacas
+     * @author Yahya el hadri el bakkali
+     * @since 1.0
+     */
     override fun getAll(): Result<List<Butaca>, ButacaError> {
         logger.debug { "Obteniendo todas las butacas" }
         return Ok(repository.findAll())
     }
 
+    /**
+     * nos devuelve una lista de butacas segun su tipo
+     * @see repository
+     * @param tipo
+     * @return lista de butacas
+     * @author Yahya el hadri el bakkali
+     * @since 1.0
+     */
     override fun getByTipo(tipo: String): Result<List<Butaca>, ButacaError> {
         logger.debug { "Obteniendo butacas por tipo: $tipo" }
         return Ok(repository.findByTipo(tipo))
     }
 
+    /**
+     * nos devuelve una butaca segun su id
+     * @see cache
+     * @see repository
+     * @param id
+     * @return butaca
+     * @author Yahya el hadri el bakkali
+     * @since 1.0
+     */
     override fun getById(id: String): Result<Butaca, ButacaError> {
         return cache.get(id).mapBoth(
             success = {
@@ -42,6 +76,16 @@ class ButacaServiceImpl(
         )
     }
 
+    /**
+     * nos crea una butaca
+     * @param butaca
+     * @see validador
+     * @see cache
+     * @see repository
+     * @return butaca
+     * @author Yahya el hadri el bakkali
+     * @since 1.0
+     */
     override fun create(butaca: Butaca): Result<Butaca, ButacaError> {
         logger.debug { "Guardando butaca $butaca" }
         return validador.validarButaca(butaca).andThen {
@@ -51,6 +95,14 @@ class ButacaServiceImpl(
         }
     }
 
+    /**
+     * actualizamos una butaca
+     * @param id
+     * @param butaca
+     * @return butaca
+     * @author Yahya el hadri el bakkali
+     * @since 1.0
+     */
     override fun update(id: String, butaca: Butaca): Result<Butaca, ButacaError> {
         logger.debug { "Actualizando butaca con id: $id" }
         return validador.validarButaca(butaca).andThen {  b ->
@@ -62,6 +114,13 @@ class ButacaServiceImpl(
         }
     }
 
+    /**
+     * eliminamos una butaca
+     * @param id
+     * @return butaca
+     * @author Yahya el hadri el bakkali
+     * @since 1.0
+     */
     override fun delete(id: String): Result<Butaca, ButacaError> {
         logger.debug { "Borrando butaca con id $id" }
         return repository.delete(id)
@@ -72,6 +131,13 @@ class ButacaServiceImpl(
             ?: Err(ButacaError.ButacaNoBorradas("La butaca no a sido eliminada $id"))
     }
 
+    /**
+     * leemos un fichero que contiene butacas
+     * @param csvFile
+     * @return lista de butacas
+     * @author Yahya el hadri el bakkali
+     * @since 1.0
+     */
     override fun import(csvFile: File): Result<List<Butaca>, ButacaError> {
         logger.debug { "Cargando butacas desde CSV" }
         return storage.load(csvFile).andThen { butacas->
@@ -82,6 +148,13 @@ class ButacaServiceImpl(
         }
     }
 
+    /**
+     * exportamos una lista de butacas a un json
+     * @param fecha
+     * @param list
+     * @author Yahya el hadri el bakkali
+     * @since 1.0
+     */
     override fun export(fecha: String, list: List<Butaca>): Result<Unit, ButacaError> {
         logger.debug { "Guardando personajes en JSON" }
         return storage.save(fecha,list)
