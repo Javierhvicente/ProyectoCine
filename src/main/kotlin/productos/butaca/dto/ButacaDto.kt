@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 /**
  * La clase dto de las butacas la vamos a necesitar
- * cuando queramos leer el csv y cuando queramos exportar el csv
+ * cuando queramos leer el csv y cuando queramos exportar el json
  * @author Yahya el hadri el bakkali
  * @since 1.0
  */

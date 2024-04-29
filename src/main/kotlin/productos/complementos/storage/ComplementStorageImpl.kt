@@ -12,6 +12,12 @@ import org.lighthousegames.logging.logging
 
 private val logger = logging()
 class ComplementStorageImpl: ComplementoStorage {
+    /**
+     *leer un fichero csv
+     * @param file
+     * @author Yahya el hadri el bakkali
+     * @since 1.0
+     */
     override fun load(file: File): Result<List<Complemento>, ComplementoError> {
         logger.debug { "Carganado complementos desde fichero Csv" }
         return try {

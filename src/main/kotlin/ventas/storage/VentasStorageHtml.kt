@@ -55,6 +55,7 @@ class VentasStorageHtml: VentasStorage {
                 </body>
                 </html>
             """.trimIndent()
+
             Ok(file.writeText(html, Charsets.UTF_8))
         }catch (e: Exception){
             logger.error { "Error al salvar ventas fichero: ${file.absolutePath}, ${e.message}" }
