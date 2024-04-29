@@ -6,6 +6,11 @@ import org.lighthousegames.logging.logging
 import java.sql.ResultSet
 
 private val logger = logging()
+/**
+ * El repositorio de los clientes
+ * @author Yahya el hadri el bakkali
+ * @since 1.0
+ */
 class ClienteRepositoryImpl: ClienteRepository {
     private fun ResultSet.toCliente(): Cliente {
         return Cliente(
@@ -14,6 +19,12 @@ class ClienteRepositoryImpl: ClienteRepository {
             is_deleted = getBoolean("is_deleted")
         )
     }
+    /**
+     * devuelve todas los clientes de la base de datos
+     * @return List<Cliente>
+     * @author Yahya el hadri el bakkali
+     * @since 1.0
+     */
     override fun findAll(): List<Cliente> {
         logger.debug { "Obteniendo todos los clientes" }
         val result = mutableListOf<Cliente>()
@@ -27,7 +38,13 @@ class ClienteRepositoryImpl: ClienteRepository {
         }
         return result
     }
-
+    /**
+     * devuelve un cliente siguiendo un id
+     * @return cliente
+     * @param id
+     * @author Yahya el hadri el bakkali
+     * @since 1.0
+     */
     override fun findById(id: String): Cliente? {
         logger.debug { "Obteniendo cliente por id:$id" }
         var result: Cliente? = null
@@ -45,7 +62,13 @@ class ClienteRepositoryImpl: ClienteRepository {
         }
         return result
     }
-
+    /**
+     * guradar un cliente
+     * @return cliente
+     * @param cliente
+     * @author Yahya el hadri el bakkali
+     * @since 1.0
+     */
     override fun save(cliente: Cliente): Cliente {
         logger.debug { "Guardando cliente: $cliente" }
         var result: Cliente = cliente
@@ -60,7 +83,13 @@ class ClienteRepositoryImpl: ClienteRepository {
         }
         return result
     }
-
+    /**
+     * actualizar un cliente
+     * @param id
+     * @param cliente
+     * @author Yahya el hadri el bakkali
+     * @since 1.0
+     */
     override fun update(id: String, cliente: Cliente): Cliente? {
         logger.debug { "Actualizanod cliente por id: $id" }
         var result: Cliente = this.findById(id) ?: return null
@@ -79,7 +108,12 @@ class ClienteRepositoryImpl: ClienteRepository {
         }
         return result
     }
-
+    /**
+     * eliminar un cliente con su id
+     * @param id
+     * @author Yahya el hadri el bakkali
+     * @since 1.0
+     */
     override fun delete(id: String): Cliente? {
         logger.debug { "Borrando cliente por id: $id" }
         var result: Cliente = this.findById(id) ?: return null

@@ -30,7 +30,7 @@ fun ComplementoEntity.toComplemento(): Complemento {
         }
 
     }
-    throw ComplementoException.TipoInvalido("Tipo no valido")
+    throw ComplementoException.TipoInvalido("Tipo no 2valido")
 }
 /**
  * El mapper del complementoDto a uncomplemento normal

@@ -1,10 +1,18 @@
 package org.example.cliente.cache
 
+import org.example.cache.CacheImpl
 import org.example.cliente.models.Cliente
 import org.example.config.Config
 import org.lighthousegames.logging.logging
 
 private val logger = logging()
+/**
+ * Cache de cliente
+ * Hereda de CacheImpl y le pasamos los genericos que vamos a necesitar
+ * @see CacheImpl
+ * @author Yahya el hadri el bakkali
+ * @since 1.0
+ **/
 class CacheClienteImpl(
     private val size: Int
 ): CacheCliente<String, Cliente> {
