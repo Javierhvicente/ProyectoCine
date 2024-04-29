@@ -5,7 +5,7 @@ import kotlin.String
 
 public data class ComplementoEntity(
   public val tipo: String,
-  public val id: Long,
+  public val id: String,
   public val nombre: String,
   public val precio: Long,
 )

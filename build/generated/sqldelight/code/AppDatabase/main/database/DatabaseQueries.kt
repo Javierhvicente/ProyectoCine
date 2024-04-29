@@ -19,25 +19,28 @@ public class DatabaseQueries(
     estado: String,
     tipo: String,
     precio: Long,
+    createAt: String,
   ) -> T): Query<T> = Query(122_392_116, arrayOf("ButacaEntity"), driver, "database.sq",
       "getAllButacaEntity",
-      "SELECT ButacaEntity.id, ButacaEntity.estado, ButacaEntity.tipo, ButacaEntity.precio FROM ButacaEntity") {
+      "SELECT ButacaEntity.id, ButacaEntity.estado, ButacaEntity.tipo, ButacaEntity.precio, ButacaEntity.createAt FROM ButacaEntity") {
       cursor ->
     mapper(
       cursor.getString(0)!!,
       cursor.getString(1)!!,
       cursor.getString(2)!!,
-      cursor.getLong(3)!!
+      cursor.getLong(3)!!,
+      cursor.getString(4)!!
     )
   }
 
   public fun getAllButacaEntity(): Query<ButacaEntity> = getAllButacaEntity { id, estado, tipo,
-      precio ->
+      precio, createAt ->
     ButacaEntity(
       id,
       estado,
       tipo,
-      precio
+      precio,
+      createAt
     )
   }
 
@@ -46,22 +49,25 @@ public class DatabaseQueries(
     estado: String,
     tipo: String,
     precio: Long,
+    createAt: String,
   ) -> T): Query<T> = GetByIdButacaEntityQuery(id) { cursor ->
     mapper(
       cursor.getString(0)!!,
       cursor.getString(1)!!,
       cursor.getString(2)!!,
-      cursor.getLong(3)!!
+      cursor.getLong(3)!!,
+      cursor.getString(4)!!
     )
   }
 
   public fun getByIdButacaEntity(id: String): Query<ButacaEntity> = getByIdButacaEntity(id) { id_,
-      estado, tipo, precio ->
+      estado, tipo, precio, createAt ->
     ButacaEntity(
       id_,
       estado,
       tipo,
-      precio
+      precio,
+      createAt
     )
   }
 
@@ -70,28 +76,31 @@ public class DatabaseQueries(
     estado: String,
     tipo: String,
     precio: Long,
+    createAt: String,
   ) -> T): Query<T> = GetbutacaByTipoQuery(tipo) { cursor ->
     mapper(
       cursor.getString(0)!!,
       cursor.getString(1)!!,
       cursor.getString(2)!!,
-      cursor.getLong(3)!!
+      cursor.getLong(3)!!,
+      cursor.getString(4)!!
     )
   }
 
   public fun getbutacaByTipo(tipo: String): Query<ButacaEntity> = getbutacaByTipo(tipo) { id,
-      estado, tipo_, precio ->
+      estado, tipo_, precio, createAt ->
     ButacaEntity(
       id,
       estado,
       tipo_,
-      precio
+      precio,
+      createAt
     )
   }
 
   public fun <T : Any> getAllComplemetoEntity(mapper: (
     tipo: String,
-    id: Long,
+    id: String,
     nombre: String,
     precio: Long,
   ) -> T): Query<T> = Query(1_265_361_777, arrayOf("ComplementoEntity"), driver, "database.sq",
@@ -100,7 +109,7 @@ public class DatabaseQueries(
       cursor ->
     mapper(
       cursor.getString(0)!!,
-      cursor.getLong(1)!!,
+      cursor.getString(1)!!,
       cursor.getString(2)!!,
       cursor.getLong(3)!!
     )
@@ -116,21 +125,21 @@ public class DatabaseQueries(
     )
   }
 
-  public fun <T : Any> getByIdComplemetoEntity(id: Long, mapper: (
+  public fun <T : Any> getByIdComplemetoEntity(id: String, mapper: (
     tipo: String,
-    id: Long,
+    id: String,
     nombre: String,
     precio: Long,
   ) -> T): Query<T> = GetByIdComplemetoEntityQuery(id) { cursor ->
     mapper(
       cursor.getString(0)!!,
-      cursor.getLong(1)!!,
+      cursor.getString(1)!!,
       cursor.getString(2)!!,
       cursor.getLong(3)!!
     )
   }
 
-  public fun getByIdComplemetoEntity(id: Long): Query<ComplementoEntity> =
+  public fun getByIdComplemetoEntity(id: String): Query<ComplementoEntity> =
       getByIdComplemetoEntity(id) { tipo, id_, nombre, precio ->
     ComplementoEntity(
       tipo,
@@ -142,13 +151,13 @@ public class DatabaseQueries(
 
   public fun <T : Any> getComplementoByTipo(tipo: String, mapper: (
     tipo: String,
-    id: Long,
+    id: String,
     nombre: String,
     precio: Long,
   ) -> T): Query<T> = GetComplementoByTipoQuery(tipo) { cursor ->
     mapper(
       cursor.getString(0)!!,
-      cursor.getLong(1)!!,
+      cursor.getString(1)!!,
       cursor.getString(2)!!,
       cursor.getLong(3)!!
     )
@@ -299,9 +308,9 @@ public class DatabaseQueries(
     id: String,
     venta_id: String,
     Butaca_id: String,
-    Complemento1_id: Long?,
-    Complemento2_id: Long?,
-    Complemento3_id: Long?,
+    Complemento1_id: String?,
+    Complemento2_id: String?,
+    Complemento3_id: String?,
     cantidad: Long,
     precio: Double,
     created_at: String,
@@ -315,9 +324,9 @@ public class DatabaseQueries(
       cursor.getString(0)!!,
       cursor.getString(1)!!,
       cursor.getString(2)!!,
-      cursor.getLong(3),
-      cursor.getLong(4),
-      cursor.getLong(5),
+      cursor.getString(3),
+      cursor.getString(4),
+      cursor.getString(5),
       cursor.getLong(6)!!,
       cursor.getDouble(7)!!,
       cursor.getString(8)!!,
@@ -348,9 +357,9 @@ public class DatabaseQueries(
     id: String,
     venta_id: String,
     Butaca_id: String,
-    Complemento1_id: Long?,
-    Complemento2_id: Long?,
-    Complemento3_id: Long?,
+    Complemento1_id: String?,
+    Complemento2_id: String?,
+    Complemento3_id: String?,
     cantidad: Long,
     precio: Double,
     created_at: String,
@@ -361,9 +370,9 @@ public class DatabaseQueries(
       cursor.getString(0)!!,
       cursor.getString(1)!!,
       cursor.getString(2)!!,
-      cursor.getLong(3),
-      cursor.getLong(4),
-      cursor.getLong(5),
+      cursor.getString(3),
+      cursor.getString(4),
+      cursor.getString(5),
       cursor.getLong(6)!!,
       cursor.getDouble(7)!!,
       cursor.getString(8)!!,
@@ -394,9 +403,9 @@ public class DatabaseQueries(
     id: String,
     venta_id: String,
     Butaca_id: String,
-    Complemento1_id: Long?,
-    Complemento2_id: Long?,
-    Complemento3_id: Long?,
+    Complemento1_id: String?,
+    Complemento2_id: String?,
+    Complemento3_id: String?,
     cantidad: Long,
     precio: Double,
     created_at: String,
@@ -407,9 +416,9 @@ public class DatabaseQueries(
       cursor.getString(0)!!,
       cursor.getString(1)!!,
       cursor.getString(2)!!,
-      cursor.getLong(3),
-      cursor.getLong(4),
-      cursor.getLong(5),
+      cursor.getString(3),
+      cursor.getString(4),
+      cursor.getString(5),
       cursor.getLong(6)!!,
       cursor.getDouble(7)!!,
       cursor.getString(8)!!,
@@ -440,9 +449,9 @@ public class DatabaseQueries(
     id: String,
     venta_id: String,
     Butaca_id: String,
-    Complemento1_id: Long?,
-    Complemento2_id: Long?,
-    Complemento3_id: Long?,
+    Complemento1_id: String?,
+    Complemento2_id: String?,
+    Complemento3_id: String?,
     cantidad: Long,
     precio: Double,
     created_at: String,
@@ -453,9 +462,9 @@ public class DatabaseQueries(
       cursor.getString(0)!!,
       cursor.getString(1)!!,
       cursor.getString(2)!!,
-      cursor.getLong(3),
-      cursor.getLong(4),
-      cursor.getLong(5),
+      cursor.getString(3),
+      cursor.getString(4),
+      cursor.getString(5),
       cursor.getLong(6)!!,
       cursor.getDouble(7)!!,
       cursor.getString(8)!!,
@@ -486,9 +495,9 @@ public class DatabaseQueries(
     id: String,
     venta_id: String,
     Butaca_id: String,
-    Complemento1_id: Long?,
-    Complemento2_id: Long?,
-    Complemento3_id: Long?,
+    Complemento1_id: String?,
+    Complemento2_id: String?,
+    Complemento3_id: String?,
     cantidad: Long,
     precio: Double,
     created_at: String,
@@ -502,9 +511,9 @@ public class DatabaseQueries(
       cursor.getString(0)!!,
       cursor.getString(1)!!,
       cursor.getString(2)!!,
-      cursor.getLong(3),
-      cursor.getLong(4),
-      cursor.getLong(5),
+      cursor.getString(3),
+      cursor.getString(4),
+      cursor.getString(5),
       cursor.getLong(6)!!,
       cursor.getDouble(7)!!,
       cursor.getString(8)!!,
@@ -536,13 +545,15 @@ public class DatabaseQueries(
     estado: String,
     tipo: String,
     precio: Long,
+    createAt: String,
   ) {
     driver.execute(-1_189_083_184,
-        """INSERT INTO ButacaEntity (id,estado,tipo,precio) VALUES (?,?,?,?)""", 4) {
+        """INSERT INTO ButacaEntity (id,estado,tipo,precio,createAt) VALUES (?,?,?,?,?)""", 5) {
           bindString(0, id)
           bindString(1, estado)
           bindString(2, tipo)
           bindLong(3, precio)
+          bindString(4, createAt)
         }
     notifyQueries(-1_189_083_184) { emit ->
       emit("ButacaEntity")
@@ -584,14 +595,14 @@ public class DatabaseQueries(
   }
 
   public fun updateComplementoEntity(
-    id: Long,
+    id: String,
     nombre: String,
     precio: Long,
     tipo: String,
   ) {
     driver.execute(634_510_139, """UPDATE ComplementoEntity SET id=?, nombre=?, precio=?, tipo=?""",
         4) {
-          bindLong(0, id)
+          bindString(0, id)
           bindString(1, nombre)
           bindLong(2, precio)
           bindString(3, tipo)
@@ -610,23 +621,25 @@ public class DatabaseQueries(
 
   public fun insertComplemento(
     tipo: String,
+    id: String,
     nombre: String,
     precio: Long,
   ) {
     driver.execute(-1_635_732_152,
-        """INSERT INTO ComplementoEntity(tipo,nombre,precio) VALUES(?,?,?)""", 3) {
+        """INSERT INTO ComplementoEntity(tipo,id,nombre,precio) VALUES(?,?,?,?)""", 4) {
           bindString(0, tipo)
-          bindString(1, nombre)
-          bindLong(2, precio)
+          bindString(1, id)
+          bindString(2, nombre)
+          bindLong(3, precio)
         }
     notifyQueries(-1_635_732_152) { emit ->
       emit("ComplementoEntity")
     }
   }
 
-  public fun deleteComplementoByID(id: Long) {
+  public fun deleteComplementoByID(id: String) {
     driver.execute(-1_079_616_536, """DELETE FROM ComplementoEntity WHERE id=?""", 1) {
-          bindLong(0, id)
+          bindString(0, id)
         }
     notifyQueries(-1_079_616_536) { emit ->
       emit("ComplementoEntity")
@@ -702,9 +715,9 @@ public class DatabaseQueries(
     id: String,
     venta_id: String,
     Butaca_id: String,
-    Complemento1_id: Long?,
-    Complemento2_id: Long?,
-    Complemento3_id: Long?,
+    Complemento1_id: String?,
+    Complemento2_id: String?,
+    Complemento3_id: String?,
     cantidad: Long,
     precio: Double,
     created_at: String,
@@ -716,9 +729,9 @@ public class DatabaseQueries(
           bindString(0, id)
           bindString(1, venta_id)
           bindString(2, Butaca_id)
-          bindLong(3, Complemento1_id)
-          bindLong(4, Complemento2_id)
-          bindLong(5, Complemento3_id)
+          bindString(3, Complemento1_id)
+          bindString(4, Complemento2_id)
+          bindString(5, Complemento3_id)
           bindLong(6, cantidad)
           bindDouble(7, precio)
           bindString(8, created_at)
@@ -732,9 +745,9 @@ public class DatabaseQueries(
   public fun updateLineaVenta(
     venta_id: String,
     Butaca_id: String,
-    Complemento1_id: Long?,
-    Complemento2_id: Long?,
-    Complemento3_id: Long?,
+    Complemento1_id: String?,
+    Complemento2_id: String?,
+    Complemento3_id: String?,
     cantidad: Long,
     precio: Double,
     updated_at: String,
@@ -746,9 +759,9 @@ public class DatabaseQueries(
         10) {
           bindString(0, venta_id)
           bindString(1, Butaca_id)
-          bindLong(2, Complemento1_id)
-          bindLong(3, Complemento2_id)
-          bindLong(4, Complemento3_id)
+          bindString(2, Complemento1_id)
+          bindString(3, Complemento2_id)
+          bindString(4, Complemento3_id)
           bindLong(5, cantidad)
           bindDouble(6, precio)
           bindString(7, updated_at)
@@ -783,7 +796,7 @@ public class DatabaseQueries(
 
     override fun <R> execute(mapper: (SqlCursor) -> QueryResult<R>): QueryResult<R> =
         driver.executeQuery(2_013_691_137,
-        """SELECT ButacaEntity.id, ButacaEntity.estado, ButacaEntity.tipo, ButacaEntity.precio FROM ButacaEntity WHERE id = ?""",
+        """SELECT ButacaEntity.id, ButacaEntity.estado, ButacaEntity.tipo, ButacaEntity.precio, ButacaEntity.createAt FROM ButacaEntity WHERE id = ?""",
         mapper, 1) {
       bindString(0, id)
     }
@@ -805,7 +818,7 @@ public class DatabaseQueries(
 
     override fun <R> execute(mapper: (SqlCursor) -> QueryResult<R>): QueryResult<R> =
         driver.executeQuery(-1_164_191_945,
-        """SELECT ButacaEntity.id, ButacaEntity.estado, ButacaEntity.tipo, ButacaEntity.precio FROM ButacaEntity WHERE tipo = ?""",
+        """SELECT ButacaEntity.id, ButacaEntity.estado, ButacaEntity.tipo, ButacaEntity.precio, ButacaEntity.createAt FROM ButacaEntity WHERE tipo = ?""",
         mapper, 1) {
       bindString(0, tipo)
     }
@@ -814,7 +827,7 @@ public class DatabaseQueries(
   }
 
   private inner class GetByIdComplemetoEntityQuery<out T : Any>(
-    public val id: Long,
+    public val id: String,
     mapper: (SqlCursor) -> T,
   ) : Query<T>(mapper) {
     override fun addListener(listener: Query.Listener) {
@@ -829,7 +842,7 @@ public class DatabaseQueries(
         driver.executeQuery(-196_566_082,
         """SELECT ComplementoEntity.tipo, ComplementoEntity.id, ComplementoEntity.nombre, ComplementoEntity.precio FROM ComplementoEntity WHERE id = ?""",
         mapper, 1) {
-      bindLong(0, id)
+      bindString(0, id)
     }
 
     override fun toString(): String = "database.sq:getByIdComplemetoEntity"

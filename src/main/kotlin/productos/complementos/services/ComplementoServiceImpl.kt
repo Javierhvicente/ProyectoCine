@@ -71,6 +71,7 @@ class ComplementoServiceImpl(
         return storage.load(csvFile).andThen { personajes->
             personajes.forEach{ p->
                 repository.save(p)
+                println("guardado $p")
             }
             Ok(personajes)
         }

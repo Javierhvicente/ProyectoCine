@@ -39,6 +39,7 @@ class ButacaStorageImpl(
 
     override fun load(file: File): Result<List<Butaca>, ButacaError> {
         logger.debug { "Carganado butacas desde fichero Csv" }
+        if (!file.exists()) println("fichero no existente")
         return try {
             Ok(file.readLines().drop(1)
                 .map {
@@ -48,7 +49,8 @@ class ButacaStorageImpl(
                         estado = data[1],
                         tipo = data[2],
                         precio = data[3],
-                        ocupacion = data[4]
+                        ocupacion = data[4],
+                        createAt = data[5]
                     ).toButaca()
                 }
             )

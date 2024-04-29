@@ -12,7 +12,7 @@ data class Venta(
     val updatedAt: LocalDateTime = LocalDateTime.now()
 ) {
     val total: Double
-        get() = lineas.sumOf { it.precio * it.cantidad }
+        get() = lineas.sumOf { it.precio  }
 
     override fun toString(): String {
         return "Venta(id=$id, cliente=$cliente, lineas=$lineas, createdAt=$createdAt, updated=$updatedAt, total=$total)"
