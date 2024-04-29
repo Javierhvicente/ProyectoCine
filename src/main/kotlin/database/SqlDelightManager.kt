@@ -1,4 +1,5 @@
 package org.example.database
+
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
 import database.DatabaseQueries
 import dev.javierhvicente.database.AppDatabase
@@ -6,7 +7,12 @@ import org.example.config.Config
 import org.lighthousegames.logging.logging
 
 private val logger = logging()
-class SqlDelightManager {
+/**
+ * manejado de la base datos
+ * @author Yahya el hadri el bakkali
+ * @since 1.0
+ */
+object SqlDelightManager {
     val databaseQueries: DatabaseQueries by lazy { initQueries() }
 
     init {
@@ -30,8 +36,8 @@ class SqlDelightManager {
         }.databaseQueries
     }
 
-    fun initialize(){
-        if(Config.databaseInitData){
+    fun initialize() {
+        if (Config.databaseInitData) {
             removeAllData()
         }
     }
@@ -41,7 +47,6 @@ class SqlDelightManager {
         logger.debug { "SqlDeLightClient.removeAllData()" }
         databaseQueries.transaction {
             databaseQueries.deleteAllButacaEntity()
-            databaseQueries.deleteAllClienteEntity()
             databaseQueries.deleteAllComplemetoEntity()
         }
     }
