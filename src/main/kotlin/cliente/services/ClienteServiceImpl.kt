@@ -9,9 +9,9 @@ import org.lighthousegames.logging.logging
 
 private val logger = logging()
 class ClienteServiceImpl(
-    val repo: ClienteRepository,
-    val validador: ClienteValidator,
-    val cache: CacheCliente<String, Cliente>
+    private val repo: ClienteRepository,
+    private val validador: ClienteValidator,
+    private val cache: CacheCliente<String, Cliente>
 ): ClienteService {
     override fun getAll(): List<Cliente> {
         logger.debug { "Obteniendo todos los clientes" }

@@ -1,8 +1,9 @@
 package org.example.productos.models
 
 class Bebida(
+    id:String,
     val nombre:CategoriaBebida
-):Complemento(nombre.toString()) {
+):Complemento(id) {
     val precio:Double
     init {
         when(nombre){
@@ -11,7 +12,7 @@ class Bebida(
         }
     }
     override fun toString(): String {
-        return "$nombre: $precio €"
+        return "$nombre: $precio-€"
     }
 }
 

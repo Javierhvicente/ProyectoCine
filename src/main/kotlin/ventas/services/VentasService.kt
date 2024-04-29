@@ -12,5 +12,7 @@ interface VentasService {
     fun getById(id: UUID): Result<Venta, VentaError>
     fun create(venta: Venta): Result<Venta, VentaError>
     fun create(cliente: Cliente, lineas: List<LineaVenta>): Result<Venta, VentaError>
+    fun delete(id: UUID): Result<Venta, VentaError>
+    fun getAll(): Result<List<Venta>, VentaError>
     fun exportToHtml(venta: Venta, htmlFile: File): Result<Unit, VentaError>
 }

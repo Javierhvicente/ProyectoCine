@@ -5,7 +5,7 @@ import com.github.michaelbull.result.Ok
 import com.github.michaelbull.result.Result
 import com.github.michaelbull.result.andThen
 import org.example.cliente.models.Cliente
-import org.example.cliente.repositories.ClienteRepositoryImpl
+import org.example.cliente.repositories.ClienteRepository
 import org.example.productos.butaca.repositories.ButacasRepository
 import org.example.productos.complementos.repositories.ComplementoRepository
 import org.example.ventas.errors.VentaError
@@ -20,7 +20,7 @@ import java.util.*
 private val logger = logging()
 class VentasServiceImpl(
     private val ventasRepository: VentasRepository,
-    private val clienteRepositoryImpl: ClienteRepositoryImpl,
+    private val clienteRepositoryImpl: ClienteRepository,
     private val complementoRepository: ComplementoRepository,
     private val butacasRepository: ButacasRepository,
     private val ventasSotrageHtml: VentasStorageHtml
@@ -40,7 +40,7 @@ class VentasServiceImpl(
     }
     private fun validateCliente(cliente: Cliente): Result<Cliente, VentaError> {
         logger.debug { "Validando cliente: $cliente" }
-        return clienteRepositoryImpl.findById(cliente.id)
+        return clienteRepositoryImpl.save(cliente)
             ?.let { Ok(it) }
             ?: Err(VentaError.VentaNoValida("Cliente no encontrado con id: ${cliente.id}"))
     }
@@ -52,15 +52,15 @@ class VentasServiceImpl(
                 ?: return Err(VentaError.VentaNoValida("Producto no encontrado con id: ${it.butaca.id}"))
         }
         lineas.forEach {
-            it.complemento1?.let { it1 -> butacasRepository.findById(it1.id) }
+            it.complemento1?.let { it1 -> complementoRepository.findById(it1.id) }
                 ?: return Err(VentaError.VentaNoEncontrada("Complemento no encontrado con id: ${it.complemento1?.id}"))
         }
         lineas.forEach {
-            it.complemento3?.let { it1 -> butacasRepository.findById(it1.id) }
+            it.complemento3?.let { it1 -> complementoRepository.findById(it1.id) }
                 ?: return Err(VentaError.VentaNoEncontrada("Complemento no encontrado con id: ${it.complemento2?.id}"))
         }
         lineas.forEach {
-            it.complemento3?.let { it1 -> butacasRepository.findById(it1.id) }
+            it.complemento3?.let { it1 -> complementoRepository.findById(it1.id) }
                 ?: return Err(VentaError.VentaNoEncontrada("Complemento no encontrado con id: ${it.complemento3?.id}"))
         }
 
@@ -73,6 +73,16 @@ class VentasServiceImpl(
         return Ok(lineas)
     }
 
+    override fun delete(id: UUID): Result<Venta, VentaError> {
+        return ventasRepository.delete(id)
+            ?.let { Ok(it) }
+            ?: Err(VentaError.VentaNoEncontrada("No se a encontrado la venta $id"))
+    }
+
+    override fun getAll(): Result<List<Venta>, VentaError> {
+        return Ok( ventasRepository.getAll())
+            ?: Err(VentaError.VentaNoEncontrada("No se han encontrado las ventas"))
+    }
 
     override fun create(cliente: Cliente, lineas: List<LineaVenta>): Result<Venta, VentaError> {
         logger.debug { "Creando venta con Cliente y lineas: $cliente, $lineas" }

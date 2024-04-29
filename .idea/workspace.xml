@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="9d4b416f-b590-47c3-a441-b0cb048309dc" name="Changes" comment="Repo de clientes y DatabaseManager sin SqlDelight.">
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -194,6 +195,9 @@
 =======
 >>>>>>> 1ef1fe2ab750bc4a15aeed3ddf14bde7870b51f3
     </list>
+=======
+    <list default="true" id="9d4b416f-b590-47c3-a441-b0cb048309dc" name="Changes" comment="Repo de clientes y DatabaseManager sin SqlDelight." />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -228,12 +232,6 @@
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="PruebaDB" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="sqldelight" type="c8890929:TasksNode$1" />
-              </path>
             </expand>
             <select />
           </tree_state>
@@ -263,6 +261,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< Updated upstream
 <<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
@@ -270,21 +269,31 @@
 =======
     &quot;Gradle.ProyectoCine [build].executor&quot;: &quot;Run&quot;,
 >>>>>>> b6d41c9d6fbea29e6f3d8049300b4209793320de
+=======
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.ProyectoCine [build].executor&quot;: &quot;Run&quot;,
+>>>>>>> Stashed changes
     &quot;Gradle.PruebaDB [clean].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.PruebaDB [generateMainAppDatabaseInterface].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
 =======
     &quot;git-widget-placeholder&quot;: &quot;feature/reposiroryComplementos&quot;,
 >>>>>>> b6d41c9d6fbea29e6f3d8049300b4209793320de
+=======
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+>>>>>>> Stashed changes
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+<<<<<<< Updated upstream
     &quot;stored_options&quot;: &quot;{\&quot;dialectConnections\&quot;:{\&quot;app.cash.sqldelight.dialects.sqlite_3_18.SqliteDialect\&quot;:{\&quot;orderedOptions\&quot;:[],\&quot;serializedProperties\&quot;:{}}}}&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
 <<<<<<< HEAD
@@ -308,20 +317,34 @@
     "stored_options": "{\"dialectConnections\":{\"app.cash.sqldelight.dialects.sqlite_3_18.SqliteDialect\":{\"orderedOptions\":[],\"serializedProperties\":{}}}}",
     "vue.rearranger.settings.migration": "true"
 >>>>>>> 1ef1fe2ab750bc4a15aeed3ddf14bde7870b51f3
+=======
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;stored_options&quot;: &quot;{\&quot;dialectConnections\&quot;:{\&quot;app.cash.sqldelight.dialects.sqlite_3_18.SqliteDialect\&quot;:{\&quot;orderedOptions\&quot;:[],\&quot;serializedProperties\&quot;:{}}}}&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+>>>>>>> Stashed changes
   },
-  "keyToStringList": {
-    "kotlin-gradle-user-dirs": [
-      "C:\\Users\\anasm\\.gradle"
+  &quot;keyToStringList&quot;: {
+    &quot;kotlin-gradle-user-dirs&quot;: [
+      &quot;C:\\Users\\anasm\\.gradle&quot;
     ]
 >>>>>>> b6d41c9d6fbea29e6f3d8049300b4209793320de
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\anasm\ProyectoCine\src\main\kotlin\productos\butaca\mappers" />
+      <recent name="C:\Users\anasm\ProyectoCine\src\main\kotlin\productos\complementos\mappers" />
+      <recent name="C:\Users\anasm\ProyectoCine\src\main\kotlin\productos\complementos\exceptions" />
+    </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
-      <recent name="cliente.models" />
+      <recent name="productos.butaca.storage" />
+      <recent name="productos.butaca.services" />
+      <recent name="productos.butaca.repositories" />
+      <recent name="productos.butaca.dto" />
+      <recent name="productos.butaca.cache" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ProyectoCine [build]">
+  <component name="RunManager" selected="Gradle.PruebaDB [clean]">
     <configuration name="ProyectoCine [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -390,8 +413,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.ProyectoCine [build]" />
         <item itemvalue="Gradle.PruebaDB [clean]" />
+        <item itemvalue="Gradle.ProyectoCine [build]" />
         <item itemvalue="Gradle.PruebaDB [generateMainAppDatabaseInterface]" />
       </list>
     </recent_temporary>
@@ -431,7 +454,11 @@
 =======
       <workItem from="1713866695561" duration="3212000" />
       <workItem from="1713880430920" duration="6725000" />
+<<<<<<< Updated upstream
 >>>>>>> 1ef1fe2ab750bc4a15aeed3ddf14bde7870b51f3
+=======
+      <workItem from="1713947607925" duration="16503000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="Repo de clientes y DatabaseManager sin SqlDelight.">
       <option name="closed" value="true" />
