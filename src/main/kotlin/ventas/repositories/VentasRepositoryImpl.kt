@@ -32,6 +32,21 @@ class VentasRepositoryImpl(
         }
         return null
     }
+    override fun getAll(): List<Venta> {
+        logger.debug { "Obteniendo todas la ventas registradas" }
+        return db.selectAllVentas().executeAsList().map {
+            it.toVenta(
+                cliente = clienteRepository.findById(it.cliente_id)!!,
+                lineas = db.selectAllLineasVentaByVentaId(it.id).executeAsList().map {
+                    it.toLineaVenta(butacasRepository.findById(it.Butaca_id)!!,
+                        complemento1 = complementosRepository.findById(it.Complemento1_id.toString()),
+                        complemento2 = complementosRepository.findById(it.Complemento2_id.toString()),
+                        complemento3 = complementosRepository.findById(it.Complemento3_id.toString()),)
+                }
+            )
+        }
+
+    }
 
     override fun save(venta: Venta): Venta {
         logger.debug { "Guardando venta: $venta" }
@@ -50,9 +65,9 @@ class VentasRepositoryImpl(
                     id = it.id.toString(),
                     venta_id = venta.id.toString(),
                     Butaca_id = it.butaca.id,
-                    Complemento1_id = it.complemento1?.id?.toLong(),
-                    Complemento2_id = it.complemento2?.id?.toLong(),
-                    Complemento3_id = it.complemento3?.id?.toLong(),
+                    Complemento1_id = it.complemento1?.id,
+                    Complemento2_id = it.complemento2?.id,
+                    Complemento3_id = it.complemento3?.id,
                     cantidad = it.cantidad.toLong(),
                     precio = it.precio,
                     created_at = it.createdAt.toString(),
@@ -63,10 +78,6 @@ class VentasRepositoryImpl(
         return venta
     }
 
-    override fun getAll(): List<Venta> {
-        logger.debug { "Obteniendo todas la ventas registradas" }
-        TODO("Not yet implemented")
-    }
 
     override fun update(id: UUID, venta: Venta): Venta? {
         logger.debug { "Acualizando venta por id: $id" }

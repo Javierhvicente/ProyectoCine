@@ -21,7 +21,7 @@ class ComplementoRepositoryImpl: ComplementoRepository {
 
     override fun findById(id: String): Complemento? {
         logger.debug { "Obteniendo complemento por id: $id" }
-        return db.getByIdComplemetoEntity(id.toLong())
+        return db.getByIdComplemetoEntity(id)
             .executeAsOneOrNull()
             ?.toComplemento()
     }
@@ -37,12 +37,18 @@ class ComplementoRepositoryImpl: ComplementoRepository {
         when(producto){
             is Bebida ->{
                 db.transaction {
-                    db.insertComplemento("BEBIDA",producto.nombre.toString(),producto.precio.toLong())
+                    db.insertComplemento(
+                        tipo = "BEBIDA",
+                        id = producto.id,
+                        nombre = producto.nombre.toString(),
+                        precio = producto.precio.toLong()
+                    )
+                    println("llega aqui")
                 }
             }
             is Comida ->{
                 db.transaction {
-                    db.insertComplemento("COMIDA",producto.nombre.toString(),producto.precio.toLong())
+                    db.insertComplemento(tipo = "COMIDA", id = producto.id, nombre = producto.nombre.toString(), precio = producto.precio.toLong())
                 }
             }
         }
@@ -55,10 +61,10 @@ class ComplementoRepositoryImpl: ComplementoRepository {
 
         when(complemento){
             is Bebida ->{
-                db.updateComplementoEntity(id.toLong(),complemento.nombre.toString(),complemento.precio.toLong(),"BEBIDA")
+                db.updateComplementoEntity(id,complemento.nombre.toString(),complemento.precio.toLong(),"BEBIDA")
             }
             is Comida ->{
-                db.updateComplementoEntity(id.toLong(),complemento.nombre.toString(),complemento.precio.toLong(),"COMIDA")
+                db.updateComplementoEntity(id,complemento.nombre.toString(),complemento.precio.toLong(),"COMIDA")
             }
         }
 
@@ -68,7 +74,7 @@ class ComplementoRepositoryImpl: ComplementoRepository {
     override fun delete(id: String): Complemento? {
         logger.debug { "Borrando complemento con id: $id" }
         val result = this.findById(id) ?: return null
-        db.deleteComplementoByID(id.toLong())
+        db.deleteComplementoByID(id)
         return result
     }
 }

@@ -11,16 +11,16 @@ fun ComplementoEntity.toComplemento(): Complemento {
     when (_tipo) {
         "COMIDA" -> {
             when (_nombre) {
-                "PALOMITAS" -> return Comida(CategoriaComida.PALOMITAS)
-                "FRUTOSSECOS" -> return Comida(CategoriaComida.FRUTOSSECOS)
-                "PATATAS" -> return Comida(CategoriaComida.PATATAS)
+                "PALOMITAS" -> return Comida("PALOMITAS",CategoriaComida.PALOMITAS)
+                "FRUTOSSECOS" -> return Comida("FRUTOS SECOS",CategoriaComida.FRUTOSSECOS)
+                "PATATAS" -> return Comida("PATATAS",CategoriaComida.PATATAS)
             }
         }
 
         "BEBIDA" -> {
             when (_nombre) {
-                "AGUA" -> return Bebida(CategoriaBebida.AGUA)
-                "REFRESCO" -> return Bebida(CategoriaBebida.REFRESCOS)
+                "AGUA" -> return Bebida("AGUA",CategoriaBebida.AGUA)
+                "REFRESCO" -> return Bebida("REFRESCO",CategoriaBebida.REFRESCOS)
             }
         }
 
@@ -30,11 +30,11 @@ fun ComplementoEntity.toComplemento(): Complemento {
 
 fun ComplementoDto.toComplemento(): Complemento {
     when(this.nombre){
-        "PALOMITAS" -> return Comida(CategoriaComida.PALOMITAS)
-        "FRUTOS SECOS" -> return Comida(CategoriaComida.FRUTOSSECOS)
-        "PATATAS" -> return Comida(CategoriaComida.PATATAS)
-        "AGUA" -> return Bebida(CategoriaBebida.AGUA)
-        "REFRESCO" -> return Bebida(CategoriaBebida.REFRESCOS)
+        "PALOMITAS" -> return Comida("PALOMITAS",CategoriaComida.PALOMITAS)
+        "FRUTOS SECOS" -> return Comida("FRUTOS SECOS",CategoriaComida.FRUTOSSECOS)
+        "PATATAS" -> return Comida("PATATAS",CategoriaComida.PATATAS)
+        "AGUA" -> return Bebida("AGUA",CategoriaBebida.AGUA)
+        "REFRESCO" -> return Bebida("REFRESCO",CategoriaBebida.REFRESCOS)
     }
     throw ComplementoException.TipoInvalido("Tipo no valido")
 }

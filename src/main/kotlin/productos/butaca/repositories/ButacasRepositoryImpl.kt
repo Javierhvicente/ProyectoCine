@@ -7,9 +7,13 @@ import org.example.productos.models.Butaca
 import org.lighthousegames.logging.logging
 
 private val logger= logging()
+
+/**
+ * El repositorio de las butacas
+ */
 class ButacasRepositoryImpl: ButacasRepository {
 
-    private val db  = SqlDelightManager().databaseQueries
+    private val db  = SqlDelightManager.databaseQueries
 
     override fun findAll(): List<Butaca> {
         logger.debug { "Obteniendo todas las butacas" }
@@ -38,7 +42,8 @@ class ButacasRepositoryImpl: ButacasRepository {
                 id = producto.id,
                 estado = producto.estado.toString(),
                 precio = producto.precio.toLong(),
-                tipo = producto.tipo.toString()
+                tipo = producto.tipo.toString(),
+                createAt = producto.create.toString()
             )
         }
         return producto

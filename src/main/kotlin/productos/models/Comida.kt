@@ -1,8 +1,9 @@
 package org.example.productos.models
 
 class Comida(
+    id:String,
     val nombre:CategoriaComida
-):Complemento(nombre.toString()) {
+):Complemento(id) {
     val precio:Double
     init {
         when(nombre){

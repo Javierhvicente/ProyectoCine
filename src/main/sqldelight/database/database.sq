@@ -9,7 +9,8 @@ CREATE TABLE IF NOT EXISTS ButacaEntity(
     id TEXT PRIMARY KEY NOT NULL,
     estado TEXT NOT NULL,
     tipo TEXT NOT NULL,
-    precio INTEGER NOT NULL
+    precio INTEGER NOT NULL,
+    createAt TEXT NOT NULL
 );
 -- Crud ButacaEntity
 getAllButacaEntity:
@@ -22,7 +23,7 @@ getbutacaByTipo:
 SELECT * FROM ButacaEntity WHERE tipo = ?;
 
 insertarbutaca:
-INSERT INTO ButacaEntity (id,estado,tipo,precio) VALUES (?,?,?,?);
+INSERT INTO ButacaEntity (id,estado,tipo,precio,createAt) VALUES (?,?,?,?,?);
 
 updateButacaEntity:
 UPDATE ButacaEntity SET id=?, estado=?, tipo=?, precio=?;
@@ -36,7 +37,7 @@ DELETE FROM ButacaEntity WHERE id=?;
 --ComplementoEntity
 CREATE TABLE IF NOT EXISTS ComplementoEntity(
     tipo TEXT NOT NULL ,
-    id INTEGER PRIMARY KEY NOT NULL,
+    id TEXT PRIMARY KEY NOT NULL,
     nombre TEXT NOT NULL,
     precio INTEGER NOT NULL
 );
@@ -57,7 +58,7 @@ deleteAllComplemetoEntity:
 DELETE FROM ComplementoEntity;
 
 insertComplemento:
-INSERT INTO ComplementoEntity(tipo,nombre,precio) VALUES(?,?,?);
+INSERT INTO ComplementoEntity(tipo,id,nombre,precio) VALUES(?,?,?,?);
 
 deleteComplementoByID:
 DELETE FROM ComplementoEntity WHERE id=?;
@@ -104,9 +105,9 @@ CREATE TABLE IF NOT EXISTS LineaVentaEntity (
      id TEXT PRIMARY KEY,
      venta_id TEXT NOT NULL REFERENCES VentaEntity(id),
      Butaca_id TEXT NOT NULL REFERENCES ButacaEntity(id),
-     Complemento1_id INTEGER REFERENCES ComplementoEntity(id) DEFAULT NULL,
-     Complemento2_id INTEGER REFERENCES ComplementoEntity(id) DEFAULT NULL,
-     Complemento3_id INTEGER REFERENCES ComplementoEntity(id) DEFAULT NULL,
+     Complemento1_id TEXT REFERENCES ComplementoEntity(id) DEFAULT NULL,
+     Complemento2_id TEXT REFERENCES ComplementoEntity(id) DEFAULT NULL,
+     Complemento3_id TEXT REFERENCES ComplementoEntity(id) DEFAULT NULL,
      cantidad INTEGER NOT NULL,
      precio REAL NOT NULL,
      created_at TEXT NOT NULL,

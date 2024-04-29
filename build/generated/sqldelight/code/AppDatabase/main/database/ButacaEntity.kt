@@ -8,4 +8,5 @@ public data class ButacaEntity(
   public val estado: String,
   public val tipo: String,
   public val precio: Long,
+  public val createAt: String,
 )

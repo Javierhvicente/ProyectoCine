@@ -39,13 +39,14 @@ private class AppDatabaseImpl(
           |    id TEXT PRIMARY KEY NOT NULL,
           |    estado TEXT NOT NULL,
           |    tipo TEXT NOT NULL,
-          |    precio INTEGER NOT NULL
+          |    precio INTEGER NOT NULL,
+          |    createAt TEXT NOT NULL
           |)
           """.trimMargin(), 0)
       driver.execute(null, """
           |CREATE TABLE IF NOT EXISTS ComplementoEntity(
           |    tipo TEXT NOT NULL ,
-          |    id INTEGER PRIMARY KEY NOT NULL,
+          |    id TEXT PRIMARY KEY NOT NULL,
           |    nombre TEXT NOT NULL,
           |    precio INTEGER NOT NULL
           |)
@@ -65,9 +66,9 @@ private class AppDatabaseImpl(
           |     id TEXT PRIMARY KEY,
           |     venta_id TEXT NOT NULL REFERENCES VentaEntity(id),
           |     Butaca_id TEXT NOT NULL REFERENCES ButacaEntity(id),
-          |     Complemento1_id INTEGER REFERENCES ComplementoEntity(id) DEFAULT NULL,
-          |     Complemento2_id INTEGER REFERENCES ComplementoEntity(id) DEFAULT NULL,
-          |     Complemento3_id INTEGER REFERENCES ComplementoEntity(id) DEFAULT NULL,
+          |     Complemento1_id TEXT REFERENCES ComplementoEntity(id) DEFAULT NULL,
+          |     Complemento2_id TEXT REFERENCES ComplementoEntity(id) DEFAULT NULL,
+          |     Complemento3_id TEXT REFERENCES ComplementoEntity(id) DEFAULT NULL,
           |     cantidad INTEGER NOT NULL,
           |     precio REAL NOT NULL,
           |     created_at TEXT NOT NULL,

@@ -1,9 +1,12 @@
 package org.example.productos.models
 
+import java.time.LocalDate
+
 class Butaca(
     val id:String,
     var estado: Estado,
-    val tipo:Tipo
+    val tipo:Tipo,
+    val create:LocalDate=LocalDate.now()
 ):Producto() {
     val precio:Double
     var ocupacion: Ocupacion

@@ -21,22 +21,22 @@ import org.koin.dsl.module
 val butacaModule= module {
     single <ButacasRepository>{ ButacasRepositoryImpl() }
     single <ButacaValidator>{ ButacaValidator() }
-    single <ButacasCacheImpl>{ ButacasCacheImpl(getProperty("cache.size")) }
+    single <ButacasCacheImpl>{ ButacasCacheImpl(5) }
     single <ButacaStorage>{ ButacaStorageImpl(get()) }
 
     single <ButacaService>{
         ButacaServiceImpl(
-            get(),
-            get(),
-            get(),
-            get()
+            repository = get(),
+            validador = get(),
+            cache = get(),
+            storage = get()
         )
     }
 }
 
 val complementoModule = module {
     single <ComplementoRepository>{ ComplementoRepositoryImpl() }
-    single <ComplementoCacheImpl>{ ComplementoCacheImpl(getProperty("cache.size")) }
+    single <ComplementoCacheImpl>{ ComplementoCacheImpl(5) }
     single <ComplementoStorage>{ ComplementStorageImpl() }
 
     single <ComplementoService>{

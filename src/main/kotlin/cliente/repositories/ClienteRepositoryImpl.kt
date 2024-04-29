@@ -40,6 +40,8 @@ class ClienteRepositoryImpl: ClienteRepository {
             if(rs.next()){
                 result = rs.toCliente()
             }
+            if (result == null) println("aqui")
+
         }
         return result
     }

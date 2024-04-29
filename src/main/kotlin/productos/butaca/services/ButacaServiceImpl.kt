@@ -74,11 +74,11 @@ class ButacaServiceImpl(
 
     override fun import(csvFile: File): Result<List<Butaca>, ButacaError> {
         logger.debug { "Cargando butacas desde CSV" }
-        return storage.load(csvFile).andThen { personajes->
-            personajes.forEach{ p->
+        return storage.load(csvFile).andThen { butacas->
+            butacas.forEach{ p->
                 repository.save(p)
             }
-            Ok(personajes)
+            Ok(butacas)
         }
     }
 
